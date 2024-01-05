@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ExpressDevsProject.iml" filepath="$PROJECT_DIR$/.idea/ExpressDevsProject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MiniProject/MiniProject.iml" filepath="$PROJECT_DIR$/MiniProject/MiniProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MiniProject/MiniProject1.iml" filepath="$PROJECT_DIR$/MiniProject/MiniProject1.iml" />
     </modules>
   </component>
 </project>
