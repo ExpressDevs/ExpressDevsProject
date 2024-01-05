@@ -14,6 +14,7 @@ public class paymentDTO {
         System.out.println();
 
 
+        System.out.println("동환아 우리 이제 된걸까?");
 
 //        switch()
     }
