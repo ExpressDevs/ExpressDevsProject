@@ -14,6 +14,8 @@ public class Payment {
         int receivedNum = sc.nextInt();
         System.out.println();
 
+        System.out.println("동환아 왜 이럴까? 이거 이대로 괜찮을까?");
+
 
 
 //        switch()
