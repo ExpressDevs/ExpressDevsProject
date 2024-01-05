@@ -1,4 +1,4 @@
-package com.ExpressDevs.Project.run;
+package com.expressdevs.project.run;
 
 public class Application {
 
