@@ -1,8 +1,8 @@
-package com.ExpressDevs.Project.payment;
+package com.expressdevs.project.model.DTO;
 
 import java.util.Scanner;
 
-public class paymentDTO {
+public class PaymentDTO {
 
     Scanner sc = new Scanner(System.in);
     public void paidWithCard() {
