@@ -14,15 +14,24 @@ public class Payment {
         int receivedNum = sc.nextInt();
         System.out.println();
 
-        System.out.println("동환아 왜 이럴까? 이거 이대로 괜찮을까?");
 
 
 
-//        switch()
+        switch(receivedNum) {
+            case 1: break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+            default:
+                break;
+
+        }
     }
 
     public void paidWithCash() {
         System.out.println("=============== 현금 결제를 선택하셨습니다. ===============");
+        System.out.println("1. ");
+
 
     }
 
