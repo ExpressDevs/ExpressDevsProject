@@ -3,6 +3,7 @@ package com.expressdevs.project.view;
 import com.expressdevs.project.member.MemberManager;
 import com.expressdevs.project.model.DTO.MemberDTO;
 import com.expressdevs.project.train.TicketingManager;
+import com.expressdevs.project.train.TrainDTO;
 
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class TicketingMenu {
 
         tm.startTicketing();
 
+        tm.TimeSchedule();
         loginMenu();
         System.out.println("끝");
 
