@@ -11,6 +11,8 @@ public class Payment {
     String str5 = "5개월 할부";
     Scanner sc = new Scanner(System.in);
 
+    /* 기차표를 선택해서 금액이 결정되면 그 정보를 가져와서 얼마 지불해야한다고 보여줘야 함. */
+
     public void paymentMethod() {
         System.out.println("================(예매/결제 관리)==================");
         System.out.println("결제 방식을 선택하세요.");
@@ -127,6 +129,7 @@ public class Payment {
 
         switch (receivedCash) {
             case 1:
+                int receivedAmount = sc.nextInt();
                 break;
             case 2:
                 break;
