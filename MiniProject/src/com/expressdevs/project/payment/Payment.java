@@ -12,6 +12,12 @@ public class Payment {
     Scanner sc = new Scanner(System.in);
 
     /* 기차표를 선택해서 금액이 결정되면 그 정보를 가져와서 얼마 지불해야한다고 보여줘야 함. */
+    public void Price() {
+
+
+
+    }
+
 
     public void paymentMethod() {
         System.out.println("================(예매/결제 관리)==================");
