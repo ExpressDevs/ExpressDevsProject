@@ -5,23 +5,23 @@ public class MemberDTO {
     private String name;
     private int age;
     private String id;
-    private String psw;
+    private String pwd;
     private int mileage=0;
     public MemberDTO() {
     }
 
-    public MemberDTO(String name, int age, String id, String psw) {
+    public MemberDTO(String name, int age, String id, String pwd) {
         this.name = name;
         this.age = age;
         this.id = id;
-        this.psw = psw;
+        this.pwd = pwd;
     }
 
-    public MemberDTO(String name, int age, String id, String psw, int mileage) {
+    public MemberDTO(String name, int age, String id, String pwd, int mileage) {
         this.name = name;
         this.age = age;
         this.id = id;
-        this.psw = psw;
+        this.pwd = pwd;
         this.mileage = mileage;
     }
 
@@ -33,12 +33,12 @@ public class MemberDTO {
         this.id = id;
     }
 
-    public String getPsw() {
-        return psw;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPsw(String psw) {
-        this.psw = psw;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public String getName() {
@@ -69,7 +69,7 @@ public class MemberDTO {
     public String toString() {
         return "MemberDTO{" +
                 "id='" + id + '\'' +
-                ", psw='" + psw + '\'' +
+                ", psw='" + pwd + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", mileage=" + mileage +
