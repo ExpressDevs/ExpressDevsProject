@@ -6,6 +6,7 @@ public class TicketingManager {
 
     private static ArrayList<ArrayList<Integer>> trainSeats = new ArrayList<>();
 
+
     public void startTicketing() {
         String startStation = selectStartStation();
         String endStation = selectEndStation(startStation);
@@ -22,7 +23,8 @@ public class TicketingManager {
         Scanner sc = new Scanner(System.in);
         String startStation = "";
         String[] stations = {"수서", "부산", "동대구", "대전", "동탄"};
-        String[] remainingStations = new String[4];
+
+
 
         while (true) {
 
@@ -38,16 +40,20 @@ public class TicketingManager {
                     break;
                 case 2:
                     startStation = "부산";
-                    break;
+
+                break;
                 case 3:
                     startStation = "동대구";
-                    break;
+
+                break;
                 case 4:
                     startStation = "대전";
-                    break;
+
+                break;
                 case 5:
                     startStation = "동탄";
-                    break;
+
+                break;
                 default:
                     System.out.println("==============================================");
                     System.out.println("유효하지 않은 역입니다. 다시 시도해주세요.");
@@ -60,23 +66,24 @@ public class TicketingManager {
     public String selectEndStation(String startStation) {
         Scanner sc = new Scanner(System.in);
         String endStation = "";
-        String[] remainingStations = new String[]{"수서", "부산", "동대구", "대전", "동탄"};
+        String[] stations = {"수서", "부산", "동대구", "대전", "동탄"};
+        List<String> remainingStations = new ArrayList<>(Arrays.asList(stations));
 
-        // 출발역을 제외한 나머지 역을 remainingStations에 넣는 부분을 추가해야 합니다.
+        remainingStations.remove(startStation);
 
         while (true) {
             System.out.println("=============== 선택 가능한 도착역 ==============");
-            for (int i = 0; i < remainingStations.length; i++) {
-                System.out.println((i + 1) + ". " + remainingStations[i]);
+            for (int i = 0; i < remainingStations.size(); i++) {
+                System.out.println((i + 1) + ". " + remainingStations.get(i));
             }
             System.out.println("==============================================");
             System.out.print("도착역을 선택하세요  : ");
             int endStationIndex = sc.nextInt();
-            if (endStationIndex < 1 || endStationIndex > 4) {
+            if (endStationIndex < 1 || endStationIndex > remainingStations.size()) {
                 System.out.println("==============================================");
                 System.out.println("유효하지 않은 역입니다. 다시 시도해주세요.");
             } else {
-                endStation = remainingStations[endStationIndex - 1];
+                endStation = remainingStations.get(endStationIndex - 1);
                 return endStation;
             }
         }
