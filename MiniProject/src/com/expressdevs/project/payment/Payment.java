@@ -11,6 +11,8 @@ public class Payment {
     String str5 = "5개월 할부";
     Scanner sc = new Scanner(System.in);
 
+    /* 기차표를 선택해서 금액이 결정되면 그 정보를 가져와서 얼마 지불해야한다고 보여줘야 함. */
+
     public void paymentMethod() {
         System.out.println("================(예매/결제 관리)==================");
         System.out.println("결제 방식을 선택하세요.");
@@ -40,7 +42,6 @@ public class Payment {
         System.out.println("");
         System.out.println("0. 할부 가능 카드 및 할부 개월 조회");
         int chosenCard = sc.nextInt();
-        label2:
         System.out.println();
 
         switch (chosenCard) {
@@ -79,14 +80,14 @@ public class Payment {
                 } else {
                     System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력하세요.");
                 }
-            break;
+                break;
             case 3:
                 System.out.println("=============== 농협카드를 선택하셨습니다. ===============");
                 System.out.println("1. 일시불");
 
                 int nhPay = sc.nextInt();
 
-                if(nhPay == 1) {
+                if (nhPay == 1) {
                     System.out.println(str1 + " 로 결제 진행하겠습니다.");
                 } else {
                     System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력하세요.");
@@ -98,7 +99,7 @@ public class Payment {
 
                 int shPay = sc.nextInt();
 
-                if(shPay == 1) {
+                if (shPay == 1) {
                     System.out.println(str1 + " 로 결제 진행하겠습니다.");
                 } else {
                     System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력하세요.");
@@ -123,27 +124,9 @@ public class Payment {
         System.out.println("5. 기타");
         System.out.println("9. 이전 메뉴로 돌아가기");
         int receivedCash = sc.nextInt();
-
-
-        switch (receivedCash) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 9:
-                break;
-            default:
-                System.out.println("잘못된 번호를 선택하셨습니다. 번호를 다시 눌러주십쇼.");
-                break;
-        }
-
+        int paidAmount = 0;
 
     }
+
 
 }
