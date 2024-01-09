@@ -8,6 +8,7 @@ import static com.expressdevs.project.run.Application.timeSchedule;
 
 public class TicketingManager {
 
+    Scanner sc = new Scanner(System.in);
     Payment pay = new Payment();
     private String startStation;
     private String endStation;
@@ -19,7 +20,6 @@ public class TicketingManager {
         String startStation = selectStartStation();
         String endStation = selectEndStation(startStation);
         String time = selectTime();
-//        String ticket = TicketQTY();
         ArrayList<Integer> seatInfo = generateSeatInfo();
 
         int remainingSeats = seatInfo.get(2);
@@ -172,41 +172,54 @@ public class TicketingManager {
         }
     }
 
-//    public String TicketQTY() {
-//        System.out.print("티켓 구매를 위한 인원 정보를 입력해주십쇼. : ");
-//        Scanner sc = new Scanner(System.in);
-//        int ticketQTY = sc.nextInt();
-//
-//        while (true) {
-//            System.out.println("============= 인원정보 ============");
-//            System.out.println("1. 어른 \n2. 만 6세 ~ 12세");
-//            System.out.println("==============================================");
-//            int inputTimeNo = sc.nextInt();
-//
-//            switch (inputTimeNo) {
-//                case 1:
-//                    time = "8:30";
-//                    break;
-//                case 2:
-//                    time = "11:30";
-//                    break;
-//                default:
-//                    System.out.println("==============================================");
-//                    System.out.println("유효하지 않은 시간입니다. 다시 시도해주세요.");
-//                    continue;
-//            }
-//            return ticketQTY;
-//        }
-//    }
-//
+    public TicketDTO TicketCount() {
+        TicketDTO td = new TicketDTO();
+        System.out.print("티켓 구매를 위한 인원 정보를 입력해주십쇼. : ");
+
+
+        while (true) {
+            System.out.println("============= 인원정보 ============");
+            System.out.println("1. 일반 \n2. 어린이(만 6세 ~ 12세) \n3. 영유아(만 6세 미만) \n4. 노인(만 65세 이상) \n5. 선택 완료");
+            System.out.println("==============================================");
+            System.out.print("인원정보를 선택해주세요 : ");
+            int age = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("구매하실  티켓 매수를 입력해주세요 : ");
+
+            int count = sc.nextInt();
+            sc.nextLine();
+
+
+
+            switch (age) {
+                case 1:
+                    td.setAdultTicketCount(count);
+                case 2:
+                    td.setAdultTicketCount(count);
+                case 3:
+                    td.setAdultTicketCount(count);
+                case 4:
+                    td.setAdultTicketCount(count);
+                case 5:
+                    return td;
+
+                default:
+                    System.out.println("==============================================");
+                    System.out.println("번호를 잘못 누르셨습니다. 다시 시도해주세요.");
+            }
+
+        }
+    }
+
 //    public void TicketPrice() {
-//        //    매개변수로 우리 출발역 도착역 정보를 받아서, 포문으로 받아서 일치하면 가격 정보 출력.
-//
-//
+        //    매개변수로 우리 출발역 도착역 정보를 받아서, 포문으로 받아서 일치하면 가격 정보 출력.
+
+
 //    }
 
 
-    public void TimeSchedule() {
+    public void TimeSchedule(TicketDTO td) {
         timeSchedule.add(new TrainDTO("수서역", "부산역", 40000));
         timeSchedule.add(new TrainDTO("수서역", "동대구역", 30000));
         timeSchedule.add(new TrainDTO("수서역", "대전역", 20000));
@@ -223,8 +236,12 @@ public class TicketingManager {
 
         for (TrainDTO price : timeSchedule) {
             if (price.getDeparture().equals(startStation) && price.getArrival().equals(endStation)) {
+                int sum = (price.getPrice()*td.getAdultTicketCount())+
+                        (int)(price.getPrice()*td.getSeniorTicketCount()*0.4)+
+                        (int)(price.getPrice()*td.getTeenagerTicketCount()*0.5)+
+                        (int)(price.getPrice()*td.getChildrenTicketCount()*0.25);
                 System.out.println("============= 티켓금액은 " + price.getPrice() + "입니다. 결제를 계속 진행해주세요. =============");
-                pay.paymentMethod(price.getPrice());
+                pay.paymentMethod(sum);
                 break;
             }
         }

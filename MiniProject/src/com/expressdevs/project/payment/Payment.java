@@ -7,10 +7,7 @@ import java.util.Scanner;
 
 public class Payment {
     String str1 = "일시불";
-    String str2 = "2개월 할부";
-    String str3 = "3개월 할부";
-    String str4 = "4개월 할부";
-    String str5 = "5개월 할부";
+
     Scanner sc = new Scanner(System.in);
 
     private int price;
@@ -98,7 +95,6 @@ public class Payment {
                 System.out.println("잘못된 번호를 입력하셨습니다. 다시 입력하세요.");
                 break;
         }
-
         System.out.println(price + " 를 결제하겠습니다.");
         System.out.println("승인 대기 중");
         System.out.println("승인 완료되었습니다.");
