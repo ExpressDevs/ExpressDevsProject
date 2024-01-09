@@ -60,9 +60,9 @@ public class TicketingManager {
     public String selectEndStation(String startStation) {
         Scanner sc = new Scanner(System.in);
         String endStation = "";
-        String[] remainingStations = new String[]{"수서", "부산", "동대구", "대전", "동탄"};
-
-        // 출발역을 제외한 나머지 역을 remainingStations에 넣는 부분을 추가해야 합니다.
+        List<String> stations = new ArrayList<>(Arrays.asList("수서", "부산", "동대구", "대전", "동탄"));
+        stations.remove(startStation);
+        String[] remainingStations = stations.toArray(new String[0]); // 리스트를 배열로 변환
 
         while (true) {
             System.out.println("=============== 선택 가능한 도착역 ==============");
@@ -72,7 +72,7 @@ public class TicketingManager {
             System.out.println("==============================================");
             System.out.print("도착역을 선택하세요  : ");
             int endStationIndex = sc.nextInt();
-            if (endStationIndex < 1 || endStationIndex > 4) {
+            if (endStationIndex < 1 || endStationIndex > remainingStations.length) {
                 System.out.println("==============================================");
                 System.out.println("유효하지 않은 역입니다. 다시 시도해주세요.");
             } else {
@@ -81,7 +81,6 @@ public class TicketingManager {
             }
         }
     }
-
     public String selectTime() {
         Scanner sc = new Scanner(System.in);
         String time = "";
