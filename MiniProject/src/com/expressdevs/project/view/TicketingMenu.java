@@ -58,31 +58,8 @@ public class TicketingMenu {
                 mm.nonMemberLogin();
                 break;
             case 3 :
-                System.out.println("==============================================");
-                System.out.println("회원가입을 진행합니다.");
-                System.out.print("성함을 입력해주세요. : ");
-                String newName = sc.nextLine();
-                System.out.print("나이를 입력해주세요. : " );
-                int newAge = sc.nextInt();
-                sc.nextLine();
-                System.out.println("사용하실 ID를 입력해주세요. : ");
-                String newID = sc.nextLine();
-                String newPsw = "";
-                int mileage = 0;
-                while (true) {
-                    System.out.println("사용하실 비밀번호를 입력해주세요 : ");
-                    newPsw = sc.nextLine();
-                    System.out.println("비밀번호를 한 번 더 입력해주세요 : ");
-                    String checkPsw = sc.nextLine();
-                    if (newPsw.equals(checkPsw)) {
-                        break;
-                    } else {
-                        System.out.println("입력하신 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
-                    }
-
-                }
-                newMember = mm.signUp(newName, newAge, newID, newPsw, mileage);
-                memberList.add(newMember);
+                this.newMember = mm.signUp();
+                memberList.add(this.newMember);
                 loginMenu();
                 break;
         }
