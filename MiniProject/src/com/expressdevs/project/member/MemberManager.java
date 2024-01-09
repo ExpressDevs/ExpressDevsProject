@@ -50,14 +50,20 @@ public class MemberManager {
         while (true) {
             System.out.println("사용하실 ID를 입력해주세요. : ");
             String newId = sc.nextLine();
-
+            Boolean isDuplicate = false;
             for (MemberDTO member : memberList) {
-                if (!member.getId().equals(newId)) {
-                    return newId;
+                if (member.getId().equals(newId)) {
+                    isDuplicate = true;
+                    break;
                 }
 
             }
-            System.out.println("이미 사용중인 아이디 입니다. 다시 입력해주세요.");
+            if (isDuplicate) {
+                System.out.println("이미 사용중인 아이디 입니다. 다시 입력해주세요.");
+            } else {
+                return newId;
+            }
+
         }
     }
 
