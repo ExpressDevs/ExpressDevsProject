@@ -16,10 +16,55 @@ public class MemberManager {
     }
 
     // 회원가입 메소드
-    public MemberDTO signUp(String name, int age, String id, String pwd, int mileage) {
+    public MemberDTO signUp() {
+        System.out.println("==============================================");
+        System.out.println("회원가입을 진행합니다.");
+        System.out.print("성함을 입력해주세요. : ");
+        String newName = sc.nextLine();
+        System.out.print("나이를 입력해주세요. : ");
+        int newAge = sc.nextInt();
+        sc.nextLine();
 
-        MemberDTO newMember = new MemberDTO(name, age, id, pwd);
+        String newId = IdDuplicateCheck();
+        String newPsw = "";
+        int mileage = 0;
+        while (true) {
+            System.out.println("사용하실 비밀번호를 입력해주세요 : ");
+            newPsw = sc.nextLine();
+            System.out.println("비밀번호를 한 번 더 입력해주세요 : ");
+            String checkPsw = sc.nextLine();
+            if (newPsw.equals(checkPsw)) {
+                break;
+            } else {
+                System.out.println("입력하신 비밀번호가 일치하지 않습니다. 다시 시도해주세요.");
+            }
+
+        }
+
+        MemberDTO newMember = new MemberDTO(newName, newAge, newId, newPsw, mileage);
         return newMember;
+    }
+
+
+    public String IdDuplicateCheck() {
+        while (true) {
+            System.out.println("사용하실 ID를 입력해주세요. : ");
+            String newId = sc.nextLine();
+            Boolean isDuplicate = false;
+            for (MemberDTO member : memberList) {
+                if (member.getId().equals(newId)) {
+                    isDuplicate = true;
+                    break;
+                }
+
+            }
+            if (isDuplicate) {
+                System.out.println("이미 사용중인 아이디 입니다. 다시 입력해주세요.");
+            } else {
+                return newId;
+            }
+
+        }
     }
 
     // 회원 로그인 메소드
@@ -91,8 +136,5 @@ public class MemberManager {
         }
     }
 
-    public void tnwjd() {
-
-    }
 
 }
