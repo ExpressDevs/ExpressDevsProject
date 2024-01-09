@@ -57,4 +57,15 @@ public class TicketDTO {
     public int getTotal() {
         return total;
     }
+
+    @Override
+    public String toString() {
+        return "TicketDTO{" +
+                "adultTicketCount=" + adultTicketCount +
+                ", seniorTicketCount=" + seniorTicketCount +
+                ", teenagerTicketCount=" + teenagerTicketCount +
+                ", childrenTicketCount=" + childrenTicketCount +
+                ", total=" + total +
+                '}';
+    }
 }
