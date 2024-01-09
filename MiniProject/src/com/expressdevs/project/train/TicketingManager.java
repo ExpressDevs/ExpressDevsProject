@@ -16,17 +16,20 @@ public class TicketingManager {
 
     private static ArrayList<ArrayList<Integer>> trainSeats = new ArrayList<>();
 
-    public void startTicketing() {
+    public TicketDTO startTicketing() {
         String startStation = selectStartStation();
         String endStation = selectEndStation(startStation);
         String time = selectTime();
         ArrayList<Integer> seatInfo = generateSeatInfo();
 
+        TicketDTO td = new TicketDTO();
+        td = TicketCount();
         int remainingSeats = seatInfo.get(2);
         System.out.println(time + "에 " + startStation + "에서 " + endStation + "로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
 
         reserveSeat(remainingSeats, seatInfo);
 
+        return td;
 
     }
 
@@ -190,17 +193,23 @@ public class TicketingManager {
             int count = sc.nextInt();
             sc.nextLine();
 
-
-
             switch (age) {
                 case 1:
                     td.setAdultTicketCount(count);
+                    td.setTotal(count);
+                    break;
                 case 2:
-                    td.setAdultTicketCount(count);
+                    td.setSeniorTicketCount(count);
+                    td.setTotal(count);
+                    break;
                 case 3:
-                    td.setAdultTicketCount(count);
+                    td.setTeenagerTicketCount(count);
+                    td.setTotal(count);
+                    break;
                 case 4:
-                    td.setAdultTicketCount(count);
+                    td.setChildrenTicketCount(count);
+                    td.setTotal(count);
+                    break;
                 case 5:
                     return td;
 
@@ -211,12 +220,6 @@ public class TicketingManager {
 
         }
     }
-
-//    public void TicketPrice() {
-        //    매개변수로 우리 출발역 도착역 정보를 받아서, 포문으로 받아서 일치하면 가격 정보 출력.
-
-
-//    }
 
 
     public void TimeSchedule(TicketDTO td) {

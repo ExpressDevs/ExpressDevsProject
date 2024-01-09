@@ -26,9 +26,9 @@ public class TicketingMenu {
         memberList.add(JW);
         memberList.add(SR);
 
-        td =tm.TicketCount();
-        tm.startTicketing();
 
+
+        td = tm.startTicketing();
         tm.TimeSchedule(td);
         loginMenu();
         System.out.println("끝");
