@@ -2,6 +2,7 @@ package com.expressdevs.project.view;
 
 import com.expressdevs.project.member.MemberManager;
 import com.expressdevs.project.model.DTO.MemberDTO;
+import com.expressdevs.project.train.TicketDTO;
 import com.expressdevs.project.train.TicketingManager;
 
 import java.util.Scanner;
@@ -10,13 +11,14 @@ import static com.expressdevs.project.run.Application.memberList;
 
 public class TicketingMenu {
 
-    private MemberDTO DH = new MemberDTO("김동환", 26 , "ehdghks", "ehdghks123", 50000);
-    private MemberDTO JW = new MemberDTO("이진우", 26 , "wlsdn", "wlsdn123", 50000);
-    private MemberDTO SR = new MemberDTO("이서린", 21 , "tjfls", "tjfls123", 50000);
+    private MemberDTO DH = new MemberDTO("김동환", 26 , "ehdghks", "ehdghks123", 20000);
+    private MemberDTO JW = new MemberDTO("이진우", 26 , "wlsdn", "wlsdn123", 10000);
+    private MemberDTO SR = new MemberDTO("이서린", 21 , "tjfls", "tjfls123", 5000);
     private MemberDTO newMember;
     private Scanner sc = new Scanner(System.in);
     private MemberManager mm = new MemberManager();
     private TicketingManager tm = new TicketingManager();
+    private TicketDTO td = new TicketDTO();
 
     public void mainMenu() {
 
@@ -24,8 +26,10 @@ public class TicketingMenu {
         memberList.add(JW);
         memberList.add(SR);
 
+        td =tm.TicketCount();
         tm.startTicketing();
 
+        tm.TimeSchedule(td);
         loginMenu();
         System.out.println("끝");
 

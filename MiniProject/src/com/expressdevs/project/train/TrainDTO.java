@@ -1,5 +1,7 @@
 package com.expressdevs.project.train;
 
+import java.util.List;
+
 import static com.expressdevs.project.run.Application.timeSchedule;
 
 public class TrainDTO {
@@ -49,7 +51,8 @@ public class TrainDTO {
                 ", price=" + price +
                 '}';
     }
-    timeSchedule.add(new TrainDTO("서울역", "대전역", 10000));
+
+
 
 
 

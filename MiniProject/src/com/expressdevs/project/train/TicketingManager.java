@@ -1,8 +1,18 @@
 package com.expressdevs.project.train;
 
+import com.expressdevs.project.payment.Payment;
+
 import java.util.*;
 
+import static com.expressdevs.project.run.Application.timeSchedule;
+
 public class TicketingManager {
+
+    Scanner sc = new Scanner(System.in);
+    Payment pay = new Payment();
+    private String startStation;
+    private String endStation;
+
 
     private static ArrayList<ArrayList<Integer>> trainSeats = new ArrayList<>();
 
@@ -16,37 +26,44 @@ public class TicketingManager {
         System.out.println(time + "에 " + startStation + "에서 " + endStation + "로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
 
         reserveSeat(remainingSeats, seatInfo);
+
+
     }
 
     public String selectStartStation() {
         Scanner sc = new Scanner(System.in);
         String startStation = "";
-        String[] stations = {"수서", "부산", "동대구", "대전", "동탄"};
+        String[] stations = {"수서역", "부산역", "동대구역", "대전", "동탄역"};
         String[] remainingStations = new String[4];
 
         while (true) {
 
-            System.out.println("============= 현재 예매 가능한 출박역 ============");
-            System.out.println("1. 수서\n2. 부산\n3. 동대구\n4. 대전\n5. 동탄");
+            System.out.println("============= 현재 예매 가능한 출발역 ============");
+            System.out.println("1. 수서역\n2. 부산역\n3. 동대구역\n4. 대전역\n5. 동탄역");
             System.out.println("==============================================");
             System.out.print("출발역을 선택하세요 (번호 입력) : ");
             int startStationIndex = sc.nextInt();
 
             switch (startStationIndex) {
                 case 1:
-                    startStation = "수서";
+                    startStation = "수서역";
+                    this.startStation = startStation;
                     break;
                 case 2:
-                    startStation = "부산";
+                    startStation = "부산역";
+                    this.startStation = startStation;
                     break;
                 case 3:
-                    startStation = "동대구";
+                    startStation = "동대구역";
+                    this.startStation = startStation;
                     break;
                 case 4:
-                    startStation = "대전";
+                    startStation = "대전역";
+                    this.startStation = startStation;
                     break;
                 case 5:
-                    startStation = "동탄";
+                    startStation = "동탄역";
+                    this.startStation = startStation;
                     break;
                 default:
                     System.out.println("==============================================");
@@ -60,7 +77,7 @@ public class TicketingManager {
     public String selectEndStation(String startStation) {
         Scanner sc = new Scanner(System.in);
         String endStation = "";
-        String[] remainingStations = new String[]{"수서", "부산", "동대구", "대전", "동탄"};
+        String[] remainingStations = new String[]{"수서역", "부산역", "동대구역", "대전역", "동탄역"};
 
         // 출발역을 제외한 나머지 역을 remainingStations에 넣는 부분을 추가해야 합니다.
 
@@ -77,6 +94,7 @@ public class TicketingManager {
                 System.out.println("유효하지 않은 역입니다. 다시 시도해주세요.");
             } else {
                 endStation = remainingStations[endStationIndex - 1];
+                this.endStation = endStation;
                 return endStation;
             }
         }
@@ -154,5 +172,80 @@ public class TicketingManager {
         }
     }
 
+    public TicketDTO TicketCount() {
+        TicketDTO td = new TicketDTO();
+        System.out.print("티켓 구매를 위한 인원 정보를 입력해주십쇼. : ");
+
+
+        while (true) {
+            System.out.println("============= 인원정보 ============");
+            System.out.println("1. 일반 \n2. 어린이(만 6세 ~ 12세) \n3. 영유아(만 6세 미만) \n4. 노인(만 65세 이상) \n5. 선택 완료");
+            System.out.println("==============================================");
+            System.out.print("인원정보를 선택해주세요 : ");
+            int age = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("구매하실  티켓 매수를 입력해주세요 : ");
+
+            int count = sc.nextInt();
+            sc.nextLine();
+
+
+
+            switch (age) {
+                case 1:
+                    td.setAdultTicketCount(count);
+                case 2:
+                    td.setAdultTicketCount(count);
+                case 3:
+                    td.setAdultTicketCount(count);
+                case 4:
+                    td.setAdultTicketCount(count);
+                case 5:
+                    return td;
+
+                default:
+                    System.out.println("==============================================");
+                    System.out.println("번호를 잘못 누르셨습니다. 다시 시도해주세요.");
+            }
+
+        }
+    }
+
+//    public void TicketPrice() {
+        //    매개변수로 우리 출발역 도착역 정보를 받아서, 포문으로 받아서 일치하면 가격 정보 출력.
+
+
+//    }
+
+
+    public void TimeSchedule(TicketDTO td) {
+        timeSchedule.add(new TrainDTO("수서역", "부산역", 40000));
+        timeSchedule.add(new TrainDTO("수서역", "동대구역", 30000));
+        timeSchedule.add(new TrainDTO("수서역", "대전역", 20000));
+        timeSchedule.add(new TrainDTO("수서역", "동탄역", 10000));
+
+        timeSchedule.add(new TrainDTO("부산역", "동대구역", 10000));
+        timeSchedule.add(new TrainDTO("부산역", "대전역", 10000));
+        timeSchedule.add(new TrainDTO("부산역", "동탄역", 10000));
+
+        timeSchedule.add(new TrainDTO("동대구역", "대전역", 10000));
+        timeSchedule.add(new TrainDTO("동대구역", "동탄역", 10000));
+
+        timeSchedule.add(new TrainDTO("대전역", "동탄역", 10000));
+
+        for (TrainDTO price : timeSchedule) {
+            if (price.getDeparture().equals(startStation) && price.getArrival().equals(endStation)) {
+                int sum = (price.getPrice()*td.getAdultTicketCount())+
+                        (int)(price.getPrice()*td.getSeniorTicketCount()*0.4)+
+                        (int)(price.getPrice()*td.getTeenagerTicketCount()*0.5)+
+                        (int)(price.getPrice()*td.getChildrenTicketCount()*0.25);
+                System.out.println("============= 티켓금액은 " + price.getPrice() + "입니다. 결제를 계속 진행해주세요. =============");
+                pay.paymentMethod(sum);
+                break;
+            }
+        }
+
+    }
 
 }
