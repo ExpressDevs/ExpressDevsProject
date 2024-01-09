@@ -20,22 +20,26 @@ public class Payment {
 
 
     public void paymentMethod() {
-        System.out.println("================(예매/결제 관리)==================");
-        System.out.println("결제 방식을 선택하세요.");
-        System.out.println("1. 카드 결제");
-        System.out.println("2. 현금 결제");
-        System.out.print(": ");
-        int result = sc.nextInt();
-        label1:
-        if (result == 1) {
-            cardChoice();
-        } else if (result == 2) {
-            payWithCash();
-        } else {
-            System.out.println("번호를 잘못 누르셨습니다. 다시 선택해주세요.");
-            break label1;
-        }
+        while (true) {
+            System.out.println("================(예매/결제 관리)==================");
+            System.out.println("결제 방식을 선택하세요.");
+            System.out.println("1. 카드 결제");
+            System.out.println("2. 현금 결제");
+            System.out.print(": ");
+            int result = sc.nextInt();
+            if (result == 1) {
+                cardChoice();
+                break;
+            } else if (result == 2) {
+                payWithCash();
+                break;
 
+
+
+            } else {
+                System.out.println("번호를 잘못 누르셨습니다. 다시 선택해주세요.");
+            }
+        }
     }
 
 

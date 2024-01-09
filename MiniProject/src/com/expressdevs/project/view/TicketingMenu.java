@@ -2,13 +2,16 @@ package com.expressdevs.project.view;
 
 import com.expressdevs.project.member.MemberManager;
 import com.expressdevs.project.model.DTO.MemberDTO;
+import com.expressdevs.project.payment.Payment;
 import com.expressdevs.project.train.TicketingManager;
 
 import java.util.Scanner;
 
 import static com.expressdevs.project.run.Application.memberList;
 
-public class TicketingMenu {
+public class
+
+TicketingMenu {
 
     private MemberDTO DH = new MemberDTO("김동환", 26 , "ehdghks", "ehdghks123", 50000);
     private MemberDTO JW = new MemberDTO("이진우", 26 , "wlsdn", "wlsdn123", 50000);
@@ -17,6 +20,7 @@ public class TicketingMenu {
     private Scanner sc = new Scanner(System.in);
     private MemberManager mm = new MemberManager();
     private TicketingManager tm = new TicketingManager();
+    private Payment pay = new Payment();
 
     public void mainMenu() {
 
@@ -27,7 +31,8 @@ public class TicketingMenu {
         tm.startTicketing();
 
         loginMenu();
-        System.out.println("끝");
+
+        pay.paymentMethod();
 
     }
 

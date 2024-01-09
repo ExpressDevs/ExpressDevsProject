@@ -8,7 +8,6 @@ public class TrainDTO {
     private int price;
 
     public TrainDTO() {
-
     }
 
     public TrainDTO(String departure, String arrival, int price) {
@@ -49,7 +48,6 @@ public class TrainDTO {
                 ", price=" + price +
                 '}';
     }
-    timeSchedule.add(new TrainDTO("서울역", "대전역", 10000));
 
 
 
