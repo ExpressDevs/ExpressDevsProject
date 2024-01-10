@@ -272,20 +272,20 @@ public class TicketingManager {
         timeSchedule.add(new TrainDTO("수서역", "대전역", 20000));
         timeSchedule.add(new TrainDTO("수서역", "동탄역", 10000));
 
-        timeSchedule.add(new TrainDTO("부산역", "동대구역", 10000));
-        timeSchedule.add(new TrainDTO("부산역", "대전역", 10000));
-        timeSchedule.add(new TrainDTO("부산역", "동탄역", 10000));
-        timeSchedule.add(new TrainDTO("부산역", "수서역", 10000));
+        timeSchedule.add(new TrainDTO("부산역", "동대구역", 50000));
+        timeSchedule.add(new TrainDTO("부산역", "대전역", 40000));
+        timeSchedule.add(new TrainDTO("부산역", "동탄역", 30000));
+        timeSchedule.add(new TrainDTO("부산역", "수서역", 15000));
 
-        timeSchedule.add(new TrainDTO("동대구역", "대전역", 10000));
-        timeSchedule.add(new TrainDTO("동대구역", "동탄역", 10000));
-        timeSchedule.add(new TrainDTO("동대구역", "수서역", 10000));
-        timeSchedule.add(new TrainDTO("동대구역", "부산역", 10000));
+        timeSchedule.add(new TrainDTO("동대구역", "대전역", 25000));
+        timeSchedule.add(new TrainDTO("동대구역", "동탄역", 19000));
+        timeSchedule.add(new TrainDTO("동대구역", "수서역", 14000));
+        timeSchedule.add(new TrainDTO("동대구역", "부산역", 12000));
 
-        timeSchedule.add(new TrainDTO("대전역", "동탄역", 10000));
-        timeSchedule.add(new TrainDTO("대전역", "수서역", 10000));
-        timeSchedule.add(new TrainDTO("대전역", "부산역", 10000));
-        timeSchedule.add(new TrainDTO("대전역", "동대구역", 10000));
+        timeSchedule.add(new TrainDTO("대전역", "동탄역", 19000));
+        timeSchedule.add(new TrainDTO("대전역", "수서역", 22000));
+        timeSchedule.add(new TrainDTO("대전역", "부산역", 24000));
+        timeSchedule.add(new TrainDTO("대전역", "동대구역", 20000));
 
         int sum = 0;
         for (int i = 0; i < timeSchedule.size(); i++) {
