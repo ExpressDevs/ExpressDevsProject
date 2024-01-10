@@ -93,8 +93,7 @@ public class Payment {
     public void NonMemberCardChoice() {
         PaymentCard();
         System.out.println(price + " 를 결제하겠습니다.");
-        System.out.println("승인 대기 중");
-        System.out.println("승인 완료되었습니다.");
+        System.out.println("결제가 완료되었습니다. 즐거운 여행이 되십쇼.");
 
     }
 
@@ -135,7 +134,8 @@ public class Payment {
             default:
                 break;
         }
-        System.out.println("카드 할인 적용된 금액은 " + finalPriceCard + "입니다. 할인된 금액은 " + (discountedPrice) + "입니다.");
+        System.out.println("카드 할인 적용된 금액은 " + finalPriceCard + "원 입니다. 할인된 금액은 " + (discountedPrice) + "원 입니다.\n 결제 금액의 5%를 마일리지로 적립시켰습니다.");
+
     }
 
     public void PaymentCash() {

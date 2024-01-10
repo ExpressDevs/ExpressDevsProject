@@ -15,8 +15,8 @@ public class TicketingMenu {
     private static int selectLogin = 0;
     private static MemberDTO nowLoginMember;
     private MemberDTO DH = new MemberDTO("김동환", 26 , "ehdghks", "ehdghks123", 20000);
-    private MemberDTO JW = new MemberDTO("이진우", 26 , "wlsdn", "wlsdn123", 10000);
-    private MemberDTO SR = new MemberDTO("이서린", 21 , "tjfls", "tjfls123", 5000);
+    private MemberDTO JW = new MemberDTO("이진우", 26 , "wlsdn", "wlsdn123", 15000);
+    private MemberDTO SR = new MemberDTO("이서린", 21 , "tjfls", "tjfls123", 10000);
     private MemberDTO newMember;
     private Scanner sc = new Scanner(System.in);
     private MemberManager mm = new MemberManager();
