@@ -59,12 +59,11 @@ public class TicketingMenu {
         switch (selectLogin) {
             case 1 :
                 mm.memberLogin();
-                this.selectLogin =1;
-
+                this.selectLogin = 1;
                 break;
             case 2 :
                 mm.nonMemberLogin();
-                this.selectLogin =2;
+                this.selectLogin = 2;
                 break;
             case 3 :
                 this.newMember = mm.signUp();

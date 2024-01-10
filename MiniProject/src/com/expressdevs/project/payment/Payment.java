@@ -9,8 +9,8 @@ public class Payment {
 
     public void paymentMethod(int selectLogin,int sum) {
         this.price = sum;
-        System.out.println("==============================================");
         System.out.println("=============== 예매/결제 관리 =================");
+        System.out.println("결제하실 총 금액은 " + price + "입니다.\n==============================================");
         System.out.println("1. 카드 결제");
         System.out.println("2. 현금 결제");
         System.out.print("결제 방식을 선택하세요 : ");
@@ -19,7 +19,7 @@ public class Payment {
         while (true) {
             switch (selectLogin) {
                 case 1:
-                    if (select == 1) {
+                    if (select == 1) {;
                         MemberCardChoice();
                         return;
                     } else if (select == 2) {
@@ -42,37 +42,10 @@ public class Payment {
                     }
             }
         }
-
-
-
     }
 
     public void MemberCardChoice() {
-        System.out.println("=============== 카드 결제를 선택하셨습니다. ===============");
-        System.out.println("1. 삼성 카드");
-        System.out.println("2. 국민 카드");
-        System.out.println("3. 농협 카드");
-        System.out.println("4. 신한 카드");
-        System.out.println("");
-        int chosenCard = sc.nextInt();
-        System.out.println();
-
-        switch (chosenCard) {
-            case 1:
-                System.out.println("=============== 삼성카드를 선택하셨습니다. ===============");
-                break;
-            case 2:
-                System.out.println("=============== 국민카드를 선택하셨습니다. ===============");
-                break;
-            case 3:
-                System.out.println("=============== 농협카드를 선택하셨습니다. ===============");
-                break;
-            case 4:
-                System.out.println("=============== 신한카드를 선택하셨습니다. ===============");
-                break;
-            default:
-                break;
-        }
+        PaymentCard();
         System.out.println("회원님이 보유중인 마일리지는 " + "" + "입니다. 사용하시겠습니까?");
         System.out.println("==============================");
         System.out.println("1. 마일리지 사용");
@@ -83,27 +56,41 @@ public class Payment {
     }
 
     public void NonMemberCardChoice() {
+        PaymentCard();
+        System.out.println(price + " 를 결제하겠습니다.");
+        System.out.println("승인 대기 중");
+        System.out.println("승인 완료되었습니다.");
+
+    }
+
+    public void PaymentCard () {
         System.out.println("=============== 카드 결제를 선택하셨습니다. ===============");
+        System.out.println("아래 카드사별 할인 안내표를 확인해주십쇼.");
+        System.out.println("* 삼성카드 5% * 국민카드 7% * 농협카드 3% * 신한카드 1%");
         System.out.println("1. 삼성 카드");
         System.out.println("2. 국민 카드");
         System.out.println("3. 농협 카드");
         System.out.println("4. 신한 카드");
-        System.out.println("");
+        System.out.print("카드를 선택해 주십쇼. : ");
         int chosenCard = sc.nextInt();
         System.out.println();
 
         switch (chosenCard) {
             case 1:
                 System.out.println("=============== 삼성카드를 선택하셨습니다. ===============");
+                System.out.println(price * 0.95);
                 break;
             case 2:
                 System.out.println("=============== 국민카드를 선택하셨습니다. ===============");
+                System.out.println(price * 0.93);
                 break;
             case 3:
                 System.out.println("=============== 농협카드를 선택하셨습니다. ===============");
+                System.out.println(price * 0.97);
                 break;
             case 4:
                 System.out.println("=============== 신한카드를 선택하셨습니다. ===============");
+                System.out.println(price * 0.99);
                 break;
             default:
                 break;
@@ -112,6 +99,7 @@ public class Payment {
         System.out.println("승인 대기 중");
         System.out.println("승인 완료되었습니다.");
 
+    }
     }
 
     public void MemberPayWithCash() {
@@ -237,6 +225,8 @@ public class Payment {
                         System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
                         break;
                     }
+
+
 
             }
         }
