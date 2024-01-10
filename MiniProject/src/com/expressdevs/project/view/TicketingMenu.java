@@ -32,7 +32,7 @@ public class TicketingMenu {
         this.td = tm.startTicketing();
         loginMenu();
         pay.paymentMethod(selectLogin, tm.TimeSchedule(td), nowLoginMember);
-        System.out.println("끝");
+        System.out.println("즐거운 여행이 되십쇼.");
     }
 
     public void loginMenu() {

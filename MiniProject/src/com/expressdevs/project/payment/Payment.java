@@ -55,7 +55,7 @@ public class Payment {
     public void useMilege() {
         while(true) {
         System.out.println("============= 마일리지 사용여부 =====================");
-        System.out.println("회원님이 보유중인 마일리지는 " + nowLoginMember.getMileage() + "입니다. 사용하시겠습니까?");
+        System.out.println("회원님이 보유중인 마일리지는 " + nowLoginMember.getMileage() + "원입니다. 사용하시겠습니까?");
         System.out.println("1. 마일리지 사용");
         System.out.println("2. 마일리지 미사용");
         System.out.print("번호를 입력하세요. : ");
@@ -72,7 +72,7 @@ public class Payment {
                         System.out.println("고객님께서 보유하신 마일리지를 초과하였습니다. 다시 입력해주십쇼.");
                         break;
                     } else if (inputMilege <= nowLoginMember.getMileage()) {
-                        System.out.println("결제 금액인 " + price + "원에 마일리지 " + inputMilege + "정상적으로 사용하였습니다. 남은 금액 결제를 진행해주십쇼.");
+                        System.out.println("결제 금액인 " + price + "원에 마일리지 " + inputMilege + "원을 정상적으로 사용하였습니다. 남은 금액 결제를 진행해주십쇼.");
                         price = price - inputMilege;
                         return;
                     } else {
@@ -109,28 +109,28 @@ public class Payment {
         System.out.print("카드를 선택해 주십쇼. : ");
         int chosenCard = sc.nextInt();
         sc.nextLine();
-        double finalPriceCard = 0;
-        double discountedPrice = 0;
+        int finalPriceCard = (int) 0;
+        int discountedPrice = (int) 0;
         switch (chosenCard) {
             case 1:
                 System.out.println("=============== 삼성카드를 선택하셨습니다. ===============");
-                finalPriceCard = price * 0.95;
-                discountedPrice = price * 0.05;
+                finalPriceCard = (int) (price * 0.95);
+                discountedPrice = (int) (price * 0.05);
                 break;
             case 2:
                 System.out.println("=============== 국민카드를 선택하셨습니다. ===============");
-                finalPriceCard = price * 0.93;
-                discountedPrice = price * 0.07;
+                finalPriceCard = (int) (price * 0.93);
+                discountedPrice = (int) (price * 0.07);
                 break;
             case 3:
                 System.out.println("=============== 농협카드를 선택하셨습니다. ===============");
-                finalPriceCard = price * 0.97;
-                discountedPrice = price * 0.03;
+                finalPriceCard = (int) (price * 0.97);
+                discountedPrice = (int) (price * 0.03);
                 break;
             case 4:
                 System.out.println("=============== 신한카드를 선택하셨습니다. ===============");
-                finalPriceCard = price * 0.99;
-                discountedPrice = price * 0.01;
+                finalPriceCard = (int) (price * 0.99);
+                discountedPrice = (int) (price * 0.01);
                 break;
             default:
                 break;

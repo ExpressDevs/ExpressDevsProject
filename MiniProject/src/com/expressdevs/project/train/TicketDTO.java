@@ -2,11 +2,11 @@ package com.expressdevs.project.train;
 
 public class TicketDTO {
 
-    private int adultTicketCount=0;
-    private int seniorTicketCount=0;
-    private int teenagerTicketCount=0;
-    private int childrenTicketCount=0;
-    private int total =0;
+    private int adultTicketCount = 0;
+    private int seniorTicketCount = 0;
+    private int teenagerTicketCount = 0;
+    private int childrenTicketCount = 0;
+    private int total = 0;
 
     public TicketDTO() {
     }

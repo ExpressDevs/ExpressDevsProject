@@ -43,7 +43,7 @@ public class TicketingManager {
         }
         int remainingSeats = seatInfo.get(2);
         System.out.println("==============================================");
-        System.out.println(time + "에 " + startStation + "에서 " + endStation + "로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
+        System.out.println(time + "에 " + startStation + "에서 " + endStation + "으로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
         System.out.println(td.getTotal() + "개 좌석 예매 가능합니다.");
 
 //        reserveSeat(remainingSeats, seatInfo);
@@ -60,7 +60,6 @@ public class TicketingManager {
 
             System.out.println("============= 현재 예매 가능한 출발역 ============");
             System.out.println("1. 수서역\n2. 부산역\n3. 동대구역\n4. 대전역\n5. 동탄역");
-            System.out.println("==============================================");
             System.out.print("출발역을 선택하세요 (번호 입력) : ");
             int startStationIndex = sc.nextInt();
 
@@ -218,13 +217,9 @@ public class TicketingManager {
 
     public TicketDTO TicketCount() {
         TicketDTO td = new TicketDTO();
-        System.out.println("==============================================");
-        System.out.print("티켓 구매를 위한 인원 정보를 입력해주십쇼. : ");
-
         while (true) {
             System.out.println("=================== 인원정보 ==================");
             System.out.println("1. 일반 \n2. 어린이(만 6세 ~ 12세) \n3. 영유아(만 6세 미만) \n4. 노인(만 65세 이상) \n5. 다음 단계");
-            System.out.println("==============================================");
             System.out.print("번호를 선택해주세요 : ");
             int age = sc.nextInt();
             sc.nextLine();
