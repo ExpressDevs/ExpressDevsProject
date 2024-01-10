@@ -264,7 +264,6 @@ public class TicketingManager {
                     break;
 
                 default:
-                    System.out.println("==============================================");
                     System.out.println("번호를 잘못 누르셨습니다. 다시 시도해주세요.");
             }
 
@@ -306,7 +305,6 @@ public class TicketingManager {
 
         return sum;
 
-
 //        for (TrainDTO price : timeSchedule) {
 //            if (price.getDeparture().equals(startStation) && price.getArrival().equals(endStation)) {
 //                int sum = (price.getPrice() * td.getAdultTicketCount()) +
@@ -320,7 +318,6 @@ public class TicketingManager {
 //                break;
 //            }
 //        }
-
     }
 
 }
