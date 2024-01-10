@@ -1,16 +1,23 @@
 package com.expressdevs.project.payment;
 
+import com.expressdevs.project.model.DTO.MemberDTO;
+
+import java.lang.reflect.Member;
 import java.util.Scanner;
+
 
 public class Payment {
     Scanner sc = new Scanner(System.in);
 
+    private MemberDTO nowLoginMember;
     private int price;
 
-    public void paymentMethod(int selectLogin,int sum) {
+    public void paymentMethod(int selectLogin, int sum, MemberDTO nowLoginMember) {
         this.price = sum;
+        this.nowLoginMember = nowLoginMember;
+        if(selectLogin == 1) {useMilege();}
         System.out.println("=============== 예매/결제 관리 =================");
-        System.out.println("결제하실 총 금액은 " + price + "입니다.\n==============================================");
+        System.out.println("결제하실 금액은 " + price + "입니다.\n==============================================");
         System.out.println("1. 카드 결제");
         System.out.println("2. 현금 결제");
         System.out.print("결제 방식을 선택하세요 : ");
@@ -19,7 +26,8 @@ public class Payment {
         while (true) {
             switch (selectLogin) {
                 case 1:
-                    if (select == 1) {;
+                    if (select == 1) {
+
                         MemberCardChoice();
                         return;
                     } else if (select == 2) {
@@ -29,7 +37,7 @@ public class Payment {
                         System.out.println("==============================================");
                         System.out.println("번호를 잘못 누르셨습니다. 다시 선택해주세요.");
                     }
-                case 2 :
+                case 2:
                     if (select == 1) {
                         NonMemberCardChoice();
                         return;
@@ -44,15 +52,42 @@ public class Payment {
         }
     }
 
-    public void MemberCardChoice() {
-        PaymentCard();
-        System.out.println("회원님이 보유중인 마일리지는 " + "" + "입니다. 사용하시겠습니까?");
-        System.out.println("==============================");
+    public void useMilege() {
+        while(true) {
+        System.out.println("============= 마일리지 사용여부 =====================");
+        System.out.println("회원님이 보유중인 마일리지는 " + nowLoginMember.getMileage() + "입니다. 사용하시겠습니까?");
         System.out.println("1. 마일리지 사용");
         System.out.println("2. 마일리지 미사용");
-        System.out.println("총 결제 금액 : " + price);
-        System.out.println("회원님께서 보유중인 마일리지는 " + "" + "입니다.");
+        System.out.print("번호를 입력하세요. : ");
+        String inputNum = sc.nextLine();
 
+            switch (inputNum) {
+                case "1":
+                    System.out.println("=========================");
+                    System.out.print("사용하실 마일리지 금액을 입력해 주세요 : ");
+                    int inputMilege = sc.nextInt();
+                    sc.nextLine();
+
+                    if (inputMilege > nowLoginMember.getMileage()) {
+                        System.out.println("고객님께서 보유하신 마일리지를 초과하였습니다. 다시 입력해주십쇼.");
+                        break;
+                    } else if (inputMilege <= nowLoginMember.getMileage()) {
+                        System.out.println("결제 금액인 " + price + "원에 마일리지 " + inputMilege + "정상적으로 사용하였습니다. 남은 금액 결제를 진행해주십쇼.");
+                        price = price - inputMilege;
+                        return;
+                    } else {
+                        System.out.println("번호가 입력되지 않았습니다. 다시 입력해주십쇼.");
+                    }
+                    break;
+                case "2":
+                    System.out.println("마일리지를 미사용합니다. 결제창으로 넘어갑니다.");
+                    return;
+            }
+        }
+    }
+
+    public void MemberCardChoice() {
+        PaymentCard();
     }
 
     public void NonMemberCardChoice() {
@@ -63,174 +98,114 @@ public class Payment {
 
     }
 
-    public void PaymentCard () {
+    public void PaymentCard() {
         System.out.println("=============== 카드 결제를 선택하셨습니다. ===============");
         System.out.println("아래 카드사별 할인 안내표를 확인해주십쇼.");
-        System.out.println("* 삼성카드 5% * 국민카드 7% * 농협카드 3% * 신한카드 1%");
+        System.out.println("* 삼성카드 5% * 국민카드 7% * 농협카드 3% * 신한카드 1% *");
         System.out.println("1. 삼성 카드");
         System.out.println("2. 국민 카드");
         System.out.println("3. 농협 카드");
         System.out.println("4. 신한 카드");
         System.out.print("카드를 선택해 주십쇼. : ");
         int chosenCard = sc.nextInt();
-        System.out.println();
-
+        sc.nextLine();
+        double finalPriceCard = 0;
+        double discountedPrice = 0;
         switch (chosenCard) {
             case 1:
                 System.out.println("=============== 삼성카드를 선택하셨습니다. ===============");
-                System.out.println(price * 0.95);
+                finalPriceCard = price * 0.95;
+                discountedPrice = price * 0.05;
                 break;
             case 2:
                 System.out.println("=============== 국민카드를 선택하셨습니다. ===============");
-                System.out.println(price * 0.93);
+                finalPriceCard = price * 0.93;
+                discountedPrice = price * 0.07;
                 break;
             case 3:
                 System.out.println("=============== 농협카드를 선택하셨습니다. ===============");
-                System.out.println(price * 0.97);
+                finalPriceCard = price * 0.97;
+                discountedPrice = price * 0.03;
                 break;
             case 4:
                 System.out.println("=============== 신한카드를 선택하셨습니다. ===============");
-                System.out.println(price * 0.99);
+                finalPriceCard = price * 0.99;
+                discountedPrice = price * 0.01;
                 break;
             default:
                 break;
         }
-        System.out.println(price + " 를 결제하겠습니다.");
-        System.out.println("승인 대기 중");
-        System.out.println("승인 완료되었습니다.");
-
+        System.out.println("카드 할인 적용된 금액은 " + finalPriceCard + "입니다. 할인된 금액은 " + (discountedPrice) + "입니다.");
     }
+
+    public void PaymentCash() {
+        System.out.println("=============== 현금 결제를 선택하셨습니다. ===============");
+        int remainingMoney = 0;
+        int num = 0;
+        while (true) {
+            System.out.println("1. 결제 금액에 맞게 지불하기");
+            System.out.println("2. 만원");
+            System.out.println("3. 오천원");
+            System.out.println("4. 천원");
+
+            int receivedCash = sc.nextInt();
+            switch (receivedCash) {
+                case 1:
+                    System.out.println("정상 결제되었습니다. 감사합니다.");
+                    return;
+                case 2:
+                    num += 10000;
+                    if (num > price) {
+                        System.out.print("결제가 완료되었습니다. ");
+                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
+                        return;
+                    } else if (num == price) {
+                        System.out.println("결제가 완료되었습니다.");
+                        return;
+                    } else {
+                        remainingMoney = price - num;
+                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
+                        break;
+                    }
+                case 3:
+                    num += 5000;
+                    if (num > price) {
+                        System.out.print("결제가 완료되었습니다. ");
+                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
+                        return;
+                    } else if (num == price) {
+                        System.out.println("결제가 완료되었습니다.");
+                        return;
+                    } else {
+                        remainingMoney = price - num;
+                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
+                        break;
+                    }
+
+                case 4:
+                    num += 1000;
+                    if (num > price) {
+                        System.out.print("결제가 완료되었습니다. ");
+                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
+                        return;
+                    } else if (num == price) {
+                        System.out.println("결제가 완료되었습니다.");
+                        return;
+                    } else {
+                        remainingMoney = price - num;
+                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
+                        break;
+                    }
+
+            }
+        }
     }
 
     public void MemberPayWithCash() {
-        System.out.println("=============== 현금 결제를 선택하셨습니다. ===============");
-
-        int remainingMoney = 0;
-        int num = 0;
-        while(true) {
-            System.out.println("1. 결제 금액에 맞게 지불하기");
-            System.out.println("2. 만원");
-            System.out.println("3. 오천원");
-            System.out.println("4. 천원");
-
-            int receivedCash = sc.nextInt();
-            switch (receivedCash) {
-                case 1:
-                    System.out.println("정상 결제되었습니다. 감사합니다.");
-                    return;
-                case 2:
-                    num += 10000;
-                    if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
-                        return;
-                    } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
-                        return;
-                    } else {
-                        remainingMoney = price -num;
-                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
-                        break;
-                    }
-                case 3:
-                    num += 5000;
-                    if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
-                        return;
-                    } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
-                        return;
-                    } else {
-                        remainingMoney = price -num;
-                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
-                        break;
-                    }
-
-                case 4:
-                    num += 1000;
-                    if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
-                        return;
-                    } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
-                        return;
-                    } else {
-                        remainingMoney = price -num;
-                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
-                        break;
-                    }
-
-            }
-        }
-
+        PaymentCash();
     }
+
     public void NonMemberPayWithCash() {
-        System.out.println("=============== 현금 결제를 선택하셨습니다. ===============");
-
-        int remainingMoney = 0;
-        int num = 0;
-        while(true) {
-            System.out.println("1. 결제 금액에 맞게 지불하기");
-            System.out.println("2. 만원");
-            System.out.println("3. 오천원");
-            System.out.println("4. 천원");
-
-            int receivedCash = sc.nextInt();
-            switch (receivedCash) {
-                case 1:
-                    System.out.println("정상 결제되었습니다. 감사합니다.");
-                    return;
-                case 2:
-                    num += 10000;
-                    if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
-                        return;
-                    } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
-                        return;
-                    } else {
-                        remainingMoney = price -num;
-                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
-                        break;
-                    }
-                case 3:
-                    num += 5000;
-                    if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
-                        return;
-                    } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
-                        return;
-                    } else {
-                        remainingMoney = price -num;
-                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
-                        break;
-                    }
-
-                case 4:
-                    num += 1000;
-                    if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
-                        return;
-                    } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
-                        return;
-                    } else {
-                        remainingMoney = price -num;
-                        System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
-                        break;
-                    }
-
-
-
-            }
-        }
-
+        PaymentCash();
     }
-
 }
