@@ -65,6 +65,10 @@ public class MemberDTO {
         this.mileage = mileage;
     }
 
+    public void addMileage(int mileage) {
+        this.mileage += mileage;
+    }
+
     @Override
     public String toString() {
         return "MemberDTO{" +
