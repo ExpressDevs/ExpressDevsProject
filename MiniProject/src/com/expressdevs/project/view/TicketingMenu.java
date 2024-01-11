@@ -32,6 +32,7 @@ public class TicketingMenu {
         this.td = tm.startTicketing();
         loginMenu();
         pay.paymentMethod(selectLogin, tm.TimeSchedule(td), nowLoginMember);
+
         System.out.println("즐거운 여행이 되십쇼.");
     }
 
@@ -69,4 +70,20 @@ public class TicketingMenu {
                 break;
         }
     }
+
+    public void GenerateTicket() {
+        int ticketNum = (int) (Math.random() * 3);
+
+
+    }
+
+//    public String ticketChar () {
+//        String str = '';
+//        for(int i = 0 ; i < ticketChar.length(); i++) {
+//            result += fromCharCode(getRandomInt(97,122))
+//        }
+//            return result;
+//        }
+
+//    }
 }

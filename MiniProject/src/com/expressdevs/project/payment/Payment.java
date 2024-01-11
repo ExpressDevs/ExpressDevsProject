@@ -17,7 +17,7 @@ public class Payment {
         this.price = sum;
         this.nowLoginMember = nowLoginMember;
         if(selectLogin == 1) {
-            if (nowLoginMember.getMileage() < 0) {
+            if (this.nowLoginMember.getMileage() > 0) {
                 useMilege();
             }
 
