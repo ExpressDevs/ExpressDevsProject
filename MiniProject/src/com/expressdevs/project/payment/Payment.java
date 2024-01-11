@@ -98,7 +98,6 @@ public class Payment {
         }
     }
 
-
     public void MemberCardChoice() {
         PaymentCard();
         int getMileage = (int) (price * 0.05);
@@ -106,7 +105,7 @@ public class Payment {
         System.out.println("적립된 마일리지 금액은" + getMileage + "입니다.");
         nowLoginMember.addMileage(getMileage);
         System.out.println("==============================================");
-        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
+        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "원 입니다.");
 
     }
 
@@ -121,10 +120,10 @@ public class Payment {
         PaymentCash();
         int getMileage = (int) (price * 0.05);
         System.out.println("==============================================");
-        System.out.println("적립된 마일리지 금액은" + getMileage + "입니다.");
+        System.out.println("적립된 마일리지 금액은" + getMileage + "원 입니다.");
         nowLoginMember.addMileage(getMileage);
         System.out.println("==============================================");
-        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
+        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "원 입니다.");
 
     }
 
@@ -135,7 +134,7 @@ public class Payment {
 
     public void PaymentCard() {
         System.out.println("=============== 카드 결제를 선택하셨습니다. ===============");
-        System.out.println("아래 카드사별 할인 안내표를 확인해주십쇼.");
+        System.out.println("아래 카드사별 할인 안내표를 확인해주세요");
         System.out.println("* 삼성카드 5% * 국민카드 7% * 농협카드 3% * 신한카드 1% *");
         System.out.println("1. 삼성 카드");
         System.out.println("2. 국민 카드");
@@ -234,7 +233,7 @@ public class Payment {
                     if (num > price) {
                         System.out.println("==============================================");
                         System.out.print("정상 결제되었습니다. 감사합니다.");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
+                        System.out.println("거스름돈은 " + (num - price) + "원 입니다.");
                         return;
                     } else if (num == price) {
                         System.out.println("==============================================");

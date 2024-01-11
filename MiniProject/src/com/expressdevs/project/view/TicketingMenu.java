@@ -29,7 +29,7 @@ public class TicketingMenu {
         memberList.add(JW);
         memberList.add(SR);
 
-        this.td = tm.startTicketing();
+        this.td = tm.startTicketing();                                      //
 
         loginMenu();
         pay.paymentMethod(selectLogin, tm.TimeSchedule(td), nowLoginMember);
@@ -74,8 +74,6 @@ public class TicketingMenu {
 
     public void GenerateTicket() {
         int ticketNum = (int) (Math.random() * 3);
-
-
     }
 
     public void TickerCheck() {
