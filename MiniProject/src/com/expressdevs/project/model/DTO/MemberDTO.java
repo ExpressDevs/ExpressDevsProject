@@ -72,14 +72,12 @@ public class MemberDTO {
     @Override
     public String toString() {
         return "MemberDTO{" +
-                "id='" + id + '\'' +
-                ", psw='" + pwd + '\'' +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", age=" + age +
+                ", id='" + id + '\'' +
+                ", pwd='" + pwd + '\'' +
                 ", mileage=" + mileage +
                 '}';
     }
-
-
 }
 

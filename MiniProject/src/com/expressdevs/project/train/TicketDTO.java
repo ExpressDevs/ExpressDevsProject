@@ -58,14 +58,43 @@ public class TicketDTO {
         return total;
     }
 
-    @Override
-    public String toString() {
-        return "TicketDTO{" +
-                "adultTicketCount=" + adultTicketCount +
-                ", seniorTicketCount=" + seniorTicketCount +
-                ", teenagerTicketCount=" + teenagerTicketCount +
-                ", childrenTicketCount=" + childrenTicketCount +
-                ", total=" + total +
-                '}';
+    public void TicketInfo() {
+        String ticketNum = "";
+        int num = 1;
+        while (num < 4) {
+            ticketNum += (int)(Math.random() * 9 + 1);
+            num++;
+        }
+        while (num < 7) {
+            ticketNum += (char) (Math.random() * 26 + 65);
+            num++;
+
+        }
+
+        System.out.println("==============================================");
+        String ticketInfo = "============== 예매하신 티켓 내역 ==============\n";
+        ticketInfo += "티켓번호 : ";
+        ticketInfo += ticketNum;
+        ticketInfo += "\n";
+
+
+        if (adultTicketCount > 0) {
+            ticketInfo += "일반 " + adultTicketCount + "장, ";
+        }
+        if (seniorTicketCount > 0) {
+            ticketInfo += "시니어 " + seniorTicketCount + "장, ";
+        }
+        if (teenagerTicketCount > 0) {
+            ticketInfo += "어린이 " + teenagerTicketCount + "장, ";
+        }
+        if (childrenTicketCount > 0) {
+            ticketInfo += "영유아 " + childrenTicketCount + "장 ";
+        }
+
+        ticketInfo += "입니다.";
+
+        System.out.println(ticketInfo);
     }
+
+
 }

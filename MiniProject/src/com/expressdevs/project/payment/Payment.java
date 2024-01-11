@@ -12,20 +12,20 @@ public class Payment {
     private int price;
 
 
-
     public void paymentMethod(int selectLogin, int sum, MemberDTO nowLoginMember) {
         this.price = sum;
         this.nowLoginMember = nowLoginMember;
-        if(selectLogin == 1) {
+        if (selectLogin == 1) {
             if (this.nowLoginMember.getMileage() > 0) {
                 useMilege();
             }
 
         }
         System.out.println("=============== 예매/결제 관리 =================");
-        System.out.println("결제하실 금액은 " + price + "입니다.==============================================");
+        System.out.println("결제하실 금액은 " + price + "입니다.");
         System.out.println("1. 카드 결제");
         System.out.println("2. 현금 결제");
+        System.out.println("==============================================");
         System.out.print("결제 방식을 선택하세요 : ");
         int select = sc.nextInt();
 
@@ -58,35 +58,40 @@ public class Payment {
     }
 
     public void useMilege() {
-        while(true) {
-        System.out.println("============= 마일리지 사용여부 =====================");
-        System.out.println("회원님이 보유중인 마일리지는 " + nowLoginMember.getMileage() + "원입니다. 사용하시겠습니까?");
-        System.out.println("1. 마일리지 사용");
-        System.out.println("2. 마일리지 미사용");
-        System.out.print("번호를 입력하세요. : ");
-        String inputNum = sc.nextLine();
+        while (true) {
+            System.out.println("============= 마일리지 사용여부 =====================");
+            System.out.println("회원님이 보유중인 마일리지는 " + nowLoginMember.getMileage() + "원입니다. 사용하시겠습니까?");
+            System.out.println("1. 마일리지 사용");
+            System.out.println("2. 마일리지 미사용");
+            System.out.println("==============================================");
+            System.out.print("번호를 입력하세요. : ");
+            String inputNum = sc.nextLine();
 
             switch (inputNum) {
                 case "1":
-                    System.out.println("=========================");
+                    System.out.println("==============================================");
                     System.out.print("사용하실 마일리지 금액을 입력해 주세요 : ");
                     int inputMileage = sc.nextInt();
                     sc.nextLine();
 
                     if (inputMileage > nowLoginMember.getMileage()) {
+                        System.out.println("==============================================");
                         System.out.println("고객님께서 보유하신 마일리지를 초과하였습니다. 다시 입력해주십쇼.");
                         break;
                     } else if (inputMileage <= nowLoginMember.getMileage()) {
+                        System.out.println("==============================================");
                         System.out.println("결제 금액인 " + price + "원에 마일리지 " + inputMileage + "원을 정상적으로 사용하였습니다. 남은 금액 결제를 진행해주십쇼.");
                         price = price - inputMileage;
                         int usedMileage = nowLoginMember.getMileage() - inputMileage;
                         nowLoginMember.setMileage(usedMileage);
                         return;
                     } else {
+                        System.out.println("==============================================");
                         System.out.println("번호가 입력되지 않았습니다. 다시 입력해주십쇼.");
                     }
                     break;
                 case "2":
+                    System.out.println("==============================================");
                     System.out.println("마일리지를 미사용합니다. 결제창으로 넘어갑니다.");
                     return;
             }
@@ -96,13 +101,12 @@ public class Payment {
 
     public void MemberCardChoice() {
         PaymentCard();
-        int getMileage = (int)(price * 0.05);
+        int getMileage = (int) (price * 0.05);
+        System.out.println("==============================================");
         System.out.println("적립된 마일리지 금액은" + getMileage + "입니다.");
-        System.out.println("체크");
         nowLoginMember.addMileage(getMileage);
-        System.out.println("체크");
+        System.out.println("==============================================");
         System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
-        System.out.println("체크");
 
     }
 
@@ -111,11 +115,21 @@ public class Payment {
         System.out.println("결제가 완료되었습니다. 즐거운 여행이 되십쇼.");
 
     }
+
     public void MemberPayWithCash() {
+
         PaymentCash();
+        int getMileage = (int) (price * 0.05);
+        System.out.println("==============================================");
+        System.out.println("적립된 마일리지 금액은" + getMileage + "입니다.");
+        nowLoginMember.addMileage(getMileage);
+        System.out.println("==============================================");
+        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
+
     }
 
     public void NonMemberPayWithCash() {
+
         PaymentCash();
     }
 
@@ -127,7 +141,8 @@ public class Payment {
         System.out.println("2. 국민 카드");
         System.out.println("3. 농협 카드");
         System.out.println("4. 신한 카드");
-        System.out.print("카드를 선택해 주십쇼. : ");
+        System.out.println("==============================================");
+        System.out.print("카드를 선택해 주세요 : ");
         int chosenCard = sc.nextInt();
         sc.nextLine();
         int finalPriceCard = 0;
@@ -165,45 +180,51 @@ public class Payment {
     }
 
     public void PaymentCash() {
-        System.out.println("=============== 현금 결제를 선택하셨습니다. ===============");
+        System.out.println("=========== 현금 결제를 선택하셨습니다. ===========");
         int remainingMoney = 0;
         int num = 0;
         while (true) {
-            System.out.println("1. 결제 금액에 맞게 지불하기");
-            System.out.println("2. 만원");
-            System.out.println("3. 오천원");
-            System.out.println("4. 천원");
-
+            System.out.println("1. 전액 지불");
+            System.out.println("2. 만원 투입\n3. 오천원 투입\n4. 천원 투입");
+            System.out.println("==============================================");
+            System.out.print("메뉴를 선택해주세요 : ");
             int receivedCash = sc.nextInt();
             switch (receivedCash) {
                 case 1:
+                    System.out.println("==============================================");
                     System.out.println("정상 결제되었습니다. 감사합니다.");
                     return;
                 case 2:
                     num += 10000;
                     if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
+                        System.out.println("==============================================");
+                        System.out.print("정상 결제되었습니다. 감사합니다.");
                         System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
                         return;
                     } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
+                        System.out.println("==============================================");
+                        System.out.println("정상 결제되었습니다. 감사합니다.");
                         return;
                     } else {
                         remainingMoney = price - num;
+                        System.out.println("==============================================");
                         System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
                         break;
                     }
                 case 3:
                     num += 5000;
                     if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
+                        System.out.println("==============================================");
+                        System.out.print("정상 결제되었습니다. 감사합니다.");
                         System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
                         return;
                     } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
+                        System.out.println("==============================================");
+                        System.out.println("정상 결제되었습니다. 감사합니다.");
                         return;
                     } else {
                         remainingMoney = price - num;
+                        System.out.println("==============================================");
                         System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
                         break;
                     }
@@ -211,18 +232,20 @@ public class Payment {
                 case 4:
                     num += 1000;
                     if (num > price) {
-                        System.out.print("결제가 완료되었습니다. ");
+                        System.out.println("==============================================");
+                        System.out.print("정상 결제되었습니다. 감사합니다.");
                         System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
                         return;
                     } else if (num == price) {
-                        System.out.println("결제가 완료되었습니다.");
+                        System.out.println("==============================================");
+                        System.out.println("정상 결제되었습니다. 감사합니다.");
                         return;
                     } else {
                         remainingMoney = price - num;
+                        System.out.println("==============================================");
                         System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
                         break;
                     }
-
             }
         }
     }

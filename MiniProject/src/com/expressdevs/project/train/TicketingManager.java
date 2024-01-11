@@ -46,7 +46,6 @@ public class TicketingManager {
         System.out.println(time + "에 " + startStation + "에서 " + endStation + "으로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
         System.out.println(td.getTotal() + "개 좌석 예매 가능합니다.");
 
-//        reserveSeat(remainingSeats, seatInfo);
 
         return td;
 
@@ -60,27 +59,28 @@ public class TicketingManager {
 
             System.out.println("============= 현재 예매 가능한 출발역 ============");
             System.out.println("1. 수서역\n2. 부산역\n3. 동대구역\n4. 대전역\n5. 동탄역");
+            System.out.println("==============================================");
             System.out.print("출발역을 선택하세요 (번호 입력) : ");
-            int startStationIndex = sc.nextInt();
+            String startStationIndex = sc.nextLine();
 
             switch (startStationIndex) {
-                case 1:
+                case "1":
                     startStation = "수서역";
                     this.startStation = startStation;
                     break;
-                case 2:
+                case "2":
                     startStation = "부산역";
                     this.startStation = startStation;
                     break;
-                case 3:
+                case "3":
                     startStation = "동대구역";
                     this.startStation = startStation;
                     break;
-                case 4:
+                case "4":
                     startStation = "대전역";
                     this.startStation = startStation;
                     break;
-                case 5:
+                case "5":
                     startStation = "동탄역";
                     this.startStation = startStation;
                     break;
@@ -127,7 +127,6 @@ public class TicketingManager {
 
         while (true) {
             int num = 1;
-            System.out.println("==============================================");
             System.out.println("============= 현재 예매 가능한 시간 ============");
             if (!"8:30".equals(selectedTime)) {
                 System.out.println(num + ". 8:30");
@@ -195,42 +194,26 @@ public class TicketingManager {
         return seatInfo;
     }
 
-//    public void reserveSeat(int remainingSeats, ArrayList<Integer> seatInfo) {
-//        Scanner sc = new Scanner(System.in);
-//        while (true) {
-//            System.out.println("==============================================");
-//            System.out.print("예약하실 좌석 번호를 입력하세요 (1-" + remainingSeats + ") : ");
-//            int seatNumber = sc.nextInt();
-//            sc.nextLine();
-//
-//            if (seatNumber > 0 && seatNumber <= remainingSeats) {
-//                remainingSeats--;
-//                seatInfo.set(2, remainingSeats);
-//                System.out.println("좌석 " + seatNumber + "번을 선택하셨습니다.");
-//                break;
-//            } else {
-//                System.out.println("==============================================");
-//                System.out.println("유효하지 않은 좌석 번호입니다. 다시 시도해주세요.");
-//            }
-//        }
-//    }
 
     public TicketDTO TicketCount() {
         TicketDTO td = new TicketDTO();
         while (true) {
             System.out.println("=================== 인원정보 ==================");
-            System.out.println("1. 일반 \n2. 어린이(만 6세 ~ 12세) \n3. 영유아(만 6세 미만) \n4. 노인(만 65세 이상) \n5. 다음 단계");
+            System.out.println("1. 일반 \n2. 시니어(만 65세 이상)\n3. 어린이(만 6세이상 만 12세 미만) \n4. 영유아(만 6세미만) \n5. 다음 단계");
+            System.out.println("==============================================");
             System.out.print("번호를 선택해주세요 : ");
             int age = sc.nextInt();
             sc.nextLine();
 
             int count = 0;
             if (age > 0 && age < 5) {
+                System.out.println("==============================================");
                 System.out.print("구매하실 티켓 매수를 입력해주세요 : ");
                 count = sc.nextInt();
                 sc.nextLine();
             } else if (age == 5) {
                 if (td.getTotal() != 0) {
+                    System.out.println("==============================================");
                     System.out.println("총 " + td.getTotal() + "매 티켓을 선택하셨습니다.");
                     return td;
                 } else {
@@ -259,6 +242,7 @@ public class TicketingManager {
                     break;
 
                 default:
+                    System.out.println("==============================================");
                     System.out.println("번호를 잘못 누르셨습니다. 다시 시도해주세요.");
             }
 
@@ -300,19 +284,6 @@ public class TicketingManager {
 
         return sum;
 
-//        for (TrainDTO price : timeSchedule) {
-//            if (price.getDeparture().equals(startStation) && price.getArrival().equals(endStation)) {
-//                int sum = (price.getPrice() * td.getAdultTicketCount()) +
-//                        (int) (price.getPrice() * td.getSeniorTicketCount() * 0.4) +
-//                        (int) (price.getPrice() * td.getTeenagerTicketCount() * 0.5) +
-//                        (int) (price.getPrice() * td.getChildrenTicketCount() * 0.25);
-//                System.out.println(sum);
-//                System.out.println("==============================================");
-//                System.out.println("총 결제 금액은 " + price.getPrice() + "입니다. 결제를 계속 진행해주세요.");
-//                pay.paymentMethod(sum);
-//                break;
-//            }
-//        }
     }
 
 }

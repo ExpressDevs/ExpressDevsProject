@@ -94,11 +94,11 @@ public class MemberManager {
 
     public void nonMemberLogin() {
         System.out.println("==============================================");
-        System.out.println("핸드폰 번호를 입력해주세요 : ");
+        System.out.print("핸드폰 번호를 입력해주세요 \n: ");
         String phone = sc.nextLine();
         this.nonMemberPhone = phone;
         System.out.println("==============================================");
-        System.out.println("사용하실 비밀번호를 입력해주세요 : ");
+        System.out.print("사용하실 비밀번호를 입력해주세요 \n: ");
         String psw = sc.nextLine();
         this.nonMemberPsw = psw;
     }
