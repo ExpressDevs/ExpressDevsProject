@@ -107,7 +107,6 @@ public class Payment {
         nowLoginMember.addMileage(getMileage);
         System.out.println("==============================================");
         System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
-
     }
 
     public void NonMemberCardChoice() {
