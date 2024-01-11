@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Payment {
     Scanner sc = new Scanner(System.in);
-//    private int finalPriceCard;
-//    private int inputMilege;
+    private int finalPriceCard;
+    private int inputMilege;
     private MemberDTO nowLoginMember;
     private int price;
 
@@ -91,7 +91,7 @@ public class Payment {
 
     public void MemberCardChoice() {
         PaymentCard();
-//        int milege = nowLoginMember.setMileage();
+//        int milege = nowLoginMember.setMileage(inputMilege);
 //        milege = 0;
 //        milege += (int)(finalPriceCard * 0.05);
 //        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
@@ -143,11 +143,11 @@ public class Payment {
                 break;
         }
         System.out.println("카드 할인 적용된 금액은 " + finalPriceCard + "원 입니다. 할인된 금액은 " + (discountedPrice) + "원 입니다.\n결제 금액의 5%를 마일리지로 적립시켰습니다.");
-        int milege = nowLoginMember.getMileage();
-        milege = 0;
-        milege += (int)(finalPriceCard * 0.05);
-        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
-//        System.out.println("현재 잔여 마일리지 금액은? : " + nowLoginMember.getMileage());
+//        int milege = nowLoginMember.getMileage();
+//        milege = 0;
+//        milege += (int)(finalPriceCard * 0.05);
+//        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
+////        System.out.println("현재 잔여 마일리지 금액은? : " + nowLoginMember.getMileage());
 
     }
 

@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Application {
 
-
     public static List<MemberDTO> memberList = new ArrayList<>();
     public static List<TrainDTO> timeSchedule = new ArrayList<>();
 
