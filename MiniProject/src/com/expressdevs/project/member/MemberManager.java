@@ -68,7 +68,7 @@ public class MemberManager {
     }
 
     // 회원 로그인 메소드
-    public void memberLogin() {
+    public MemberDTO memberLogin() {
 
         System.out.println("==============================================");
         while (true) {
@@ -79,9 +79,11 @@ public class MemberManager {
             System.out.print("비밀번호를 입력하세요: ");
             String inputPsw = scanner.nextLine();
 
+            MemberDTO nowLoginMember;
             for (MemberDTO member : memberList) {
                 if (member.getId().equals(inputID) && member.getPwd().equals(inputPsw)) {
-                    return;
+                    nowLoginMember = member;
+                    return nowLoginMember;
                 }
             }
             System.out.println("==============================================");
