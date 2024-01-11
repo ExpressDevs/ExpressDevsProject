@@ -65,17 +65,19 @@ public class MemberDTO {
         this.mileage = mileage;
     }
 
+    public void addMileage(int mileage) {
+        this.mileage += mileage;
+    }
+
     @Override
     public String toString() {
         return "MemberDTO{" +
-                "id='" + id + '\'' +
-                ", psw='" + pwd + '\'' +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", age=" + age +
+                ", id='" + id + '\'' +
+                ", pwd='" + pwd + '\'' +
                 ", mileage=" + mileage +
                 '}';
     }
-
-
 }
 

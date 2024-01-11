@@ -30,8 +30,10 @@ public class TicketingMenu {
         memberList.add(SR);
 
         this.td = tm.startTicketing();
+
         loginMenu();
         pay.paymentMethod(selectLogin, tm.TimeSchedule(td), nowLoginMember);
+        TickerCheck();
         System.out.println("즐거운 여행이 되십쇼.");
     }
 
@@ -67,6 +69,31 @@ public class TicketingMenu {
                 memberList.add(this.newMember);
                 loginMenu();
                 break;
+        }
+    }
+
+    public void GenerateTicket() {
+        int ticketNum = (int) (Math.random() * 3);
+
+
+    }
+
+    public void TickerCheck() {
+        while (true) {
+            System.out.println("==============================================");
+            System.out.println("예매하신 내역을 확인하시겠습니까?");
+            System.out.println("1. 예매내역 확인");
+            System.out.println("2. 프로그램 종료");
+            System.out.println("==============================================");
+            System.out.print("메뉴 선택 : ");
+            String input = sc.nextLine();
+            switch (input) {
+                case "1" :
+                    td.TicketInfo();
+                case "2" : return;
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+            }
         }
     }
 }
