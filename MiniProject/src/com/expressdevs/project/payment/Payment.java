@@ -8,9 +8,12 @@ import java.util.Scanner;
 
 public class Payment {
     Scanner sc = new Scanner(System.in);
-
+//    private int finalPriceCard;
+//    private int inputMilege;
     private MemberDTO nowLoginMember;
     private int price;
+
+
 
     public void paymentMethod(int selectLogin, int sum, MemberDTO nowLoginMember) {
         this.price = sum;
@@ -32,7 +35,6 @@ public class Payment {
             switch (selectLogin) {
                 case 1:
                     if (select == 1) {
-
                         MemberCardChoice();
                         return;
                     } else if (select == 2) {
@@ -79,6 +81,7 @@ public class Payment {
                     } else if (inputMilege <= nowLoginMember.getMileage()) {
                         System.out.println("결제 금액인 " + price + "원에 마일리지 " + inputMilege + "원을 정상적으로 사용하였습니다. 남은 금액 결제를 진행해주십쇼.");
                         price = price - inputMilege;
+//                        nowLoginMember.getMileage() = nowLoginMember.getMileage() - inputMilege;
                         return;
                     } else {
                         System.out.println("번호가 입력되지 않았습니다. 다시 입력해주십쇼.");
@@ -93,6 +96,11 @@ public class Payment {
 
     public void MemberCardChoice() {
         PaymentCard();
+//        int milege = nowLoginMember.setMileage();
+//        milege = 0;
+//        milege += (int)(finalPriceCard * 0.05);
+//        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
+//        System.out.println("현재 잔여 마일리지 금액은? : " + nowLoginMember.getMileage());
     }
 
     public void NonMemberCardChoice() {
@@ -139,7 +147,12 @@ public class Payment {
             default:
                 break;
         }
-        System.out.println("카드 할인 적용된 금액은 " + finalPriceCard + "원 입니다. 할인된 금액은 " + (discountedPrice) + "원 입니다.\n 결제 금액의 5%를 마일리지로 적립시켰습니다.");
+        System.out.println("카드 할인 적용된 금액은 " + finalPriceCard + "원 입니다. 할인된 금액은 " + (discountedPrice) + "원 입니다.\n결제 금액의 5%를 마일리지로 적립시켰습니다.");
+        int milege = nowLoginMember.getMileage();
+        milege = 0;
+        milege += (int)(finalPriceCard * 0.05);
+        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
+//        System.out.println("현재 잔여 마일리지 금액은? : " + nowLoginMember.getMileage());
 
     }
 
@@ -208,6 +221,11 @@ public class Payment {
 
     public void MemberPayWithCash() {
         PaymentCash();
+//        int milege = nowLoginMember.getMileage();
+//        milege = 0;
+//        milege += (int)(finalPriceCard * 0.05);
+//        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
+//        System.out.println("현재 잔여 마일리지 금액은? : " + nowLoginMember.getMileage());
     }
 
     public void NonMemberPayWithCash() {
