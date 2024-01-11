@@ -17,6 +17,8 @@ public class TicketDTO {
         this.seniorTicketCount = seniorTicketCount;
         this.teenagerTicketCount = teenagerTicketCount;
         this.childrenTicketCount = childrenTicketCount;
+
+
     }
 
     public int getAdultTicketCount() {
