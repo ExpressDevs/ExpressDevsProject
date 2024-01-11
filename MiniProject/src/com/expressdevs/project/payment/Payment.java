@@ -15,7 +15,12 @@ public class Payment {
     public void paymentMethod(int selectLogin, int sum, MemberDTO nowLoginMember) {
         this.price = sum;
         this.nowLoginMember = nowLoginMember;
-        if(selectLogin == 1) {useMilege();}
+        if(selectLogin == 1) {
+            if (nowLoginMember.getMileage() < 0) {
+                useMilege();
+            }
+
+        }
         System.out.println("=============== 예매/결제 관리 =================");
         System.out.println("결제하실 금액은 " + price + "입니다.\n==============================================");
         System.out.println("1. 카드 결제");
