@@ -8,6 +8,7 @@ public class TicketDTO {
     private int childrenTicketCount = 0;
     private int total = 0;
 
+
     public TicketDTO() {
     }
 
@@ -16,6 +17,8 @@ public class TicketDTO {
         this.seniorTicketCount = seniorTicketCount;
         this.teenagerTicketCount = teenagerTicketCount;
         this.childrenTicketCount = childrenTicketCount;
+
+
     }
 
     public int getAdultTicketCount() {
@@ -58,6 +61,7 @@ public class TicketDTO {
         return total;
     }
 
+
     public void TicketInfo() {
         String ticketNum = "";
         int num = 1;
@@ -68,7 +72,6 @@ public class TicketDTO {
         while (num < 7) {
             ticketNum += (char) (Math.random() * 26 + 65);
             num++;
-
         }
 
         System.out.println("==============================================");

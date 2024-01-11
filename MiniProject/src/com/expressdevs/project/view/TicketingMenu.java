@@ -24,8 +24,8 @@ public class TicketingMenu {
     private TicketDTO td = new TicketDTO();
     private Payment pay = new Payment();
 
-    public void mainMenu() {
-        memberList.add(DH);
+    public void mainMenu() {        //  메소드 첫 구동
+        memberList.add(DH);         //  회원정보를 멤버 리스트에 추가
         memberList.add(JW);
         memberList.add(SR);
 
