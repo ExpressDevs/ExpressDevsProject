@@ -13,7 +13,6 @@ public class TicketingManager {
     private String startStation;
     private String endStation;
 
-
     private static ArrayList<ArrayList<Integer>> trainSeats = new ArrayList<>();
 
     public TicketDTO startTicketing() {
@@ -39,17 +38,12 @@ public class TicketingManager {
             } else {
                 break;
             }
-
         }
         int remainingSeats = seatInfo.get(2);
         System.out.println("==============================================");
         System.out.println(time + "에 " + startStation + "에서 " + endStation + "으로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
         System.out.println(td.getTotal() + "개 좌석 예매 가능합니다.");
-
-//        reserveSeat(remainingSeats, seatInfo);
-
         return td;
-
     }
 
     public String selectStartStation() {
@@ -195,26 +189,6 @@ public class TicketingManager {
         return seatInfo;
     }
 
-//    public void reserveSeat(int remainingSeats, ArrayList<Integer> seatInfo) {
-//        Scanner sc = new Scanner(System.in);
-//        while (true) {
-//            System.out.println("==============================================");
-//            System.out.print("예약하실 좌석 번호를 입력하세요 (1-" + remainingSeats + ") : ");
-//            int seatNumber = sc.nextInt();
-//            sc.nextLine();
-//
-//            if (seatNumber > 0 && seatNumber <= remainingSeats) {
-//                remainingSeats--;
-//                seatInfo.set(2, remainingSeats);
-//                System.out.println("좌석 " + seatNumber + "번을 선택하셨습니다.");
-//                break;
-//            } else {
-//                System.out.println("==============================================");
-//                System.out.println("유효하지 않은 좌석 번호입니다. 다시 시도해주세요.");
-//            }
-//        }
-//    }
-
     public TicketDTO TicketCount() {
         TicketDTO td = new TicketDTO();
         while (true) {
@@ -237,7 +211,6 @@ public class TicketingManager {
                     System.out.println("선택된 티켓이 없습니다. 구입하실 티켓 매수를 입력해주세요");
                     continue;
                 }
-
             }
 
             switch (age) {

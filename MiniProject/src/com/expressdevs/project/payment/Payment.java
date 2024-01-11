@@ -96,11 +96,6 @@ public class Payment {
 
     public void MemberCardChoice() {
         PaymentCard();
-//        int milege = nowLoginMember.setMileage(inputMilege);
-//        milege = 0;
-//        milege += (int)(finalPriceCard * 0.05);
-//        System.out.println("적립된 마일리지 금액은 " + milege + "원 입니다.");
-//        System.out.println("현재 잔여 마일리지 금액은? : " + nowLoginMember.getMileage());
     }
 
     public void NonMemberCardChoice() {
@@ -199,7 +194,6 @@ public class Payment {
                         System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
                         break;
                     }
-
                 case 4:
                     num += 1000;
                     if (num > price) {
