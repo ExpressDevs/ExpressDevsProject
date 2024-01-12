@@ -70,13 +70,14 @@ public class Payment {
             switch (inputNum) {
                 case "1":
                     System.out.println("==============================================");
+                    System.out.println("보유 마일리지 : " + nowLoginMember.getMileage() + "원");
                     System.out.print("사용하실 마일리지 금액을 입력해 주세요 : ");
                     int inputMileage = sc.nextInt();
                     sc.nextLine();
 
                     if (inputMileage > nowLoginMember.getMileage()) {
                         System.out.println("==============================================");
-                        System.out.println("고객님께서 보유하신 마일리지를 초과하였습니다. 다시 입력해주십쇼.");
+                        System.out.println("고객님께서 보유하신 마일리지를 초과하였습니다. 다시 입력해주세요.");
                         break;
                     } else if (inputMileage <= nowLoginMember.getMileage()) {
                         System.out.println("==============================================");
@@ -98,7 +99,6 @@ public class Payment {
         }
     }
 
-
     public void MemberCardChoice() {
         PaymentCard();
         int getMileage = (int) (price * 0.05);
@@ -106,7 +106,8 @@ public class Payment {
         System.out.println("적립된 마일리지 금액은" + getMileage + "입니다.");
         nowLoginMember.addMileage(getMileage);
         System.out.println("==============================================");
-        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
+        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "원 입니다.");
+
     }
 
     public void NonMemberCardChoice() {
@@ -120,10 +121,10 @@ public class Payment {
         PaymentCash();
         int getMileage = (int) (price * 0.05);
         System.out.println("==============================================");
-        System.out.println("적립된 마일리지 금액은" + getMileage + "입니다.");
+        System.out.println("적립된 마일리지 금액은" + getMileage + "원 입니다.");
         nowLoginMember.addMileage(getMileage);
         System.out.println("==============================================");
-        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "입니다.");
+        System.out.println("현재 보유하신 마일리지는 " + nowLoginMember.getMileage() + "원 입니다.");
 
     }
 
@@ -134,8 +135,9 @@ public class Payment {
 
     public void PaymentCard() {
         System.out.println("=============== 카드 결제를 선택하셨습니다. ===============");
-        System.out.println("아래 카드사별 할인 안내표를 확인해주십쇼.");
+        System.out.println("아래 카드사별 할인 안내표를 확인해주세요");
         System.out.println("* 삼성카드 5% * 국민카드 7% * 농협카드 3% * 신한카드 1% *");
+        System.out.println("==============================================");
         System.out.println("1. 삼성 카드");
         System.out.println("2. 국민 카드");
         System.out.println("3. 농협 카드");
@@ -148,22 +150,22 @@ public class Payment {
         int discountedPrice = 0;
         switch (chosenCard) {
             case 1:
-                System.out.println("=============== 삼성카드를 선택하셨습니다. ===============");
+                System.out.println("=========== 삼성카드를 선택하셨습니다. ===========");
                 finalPriceCard = (int) (price * 0.95);
                 discountedPrice = (int) (price * 0.05);
                 break;
             case 2:
-                System.out.println("=============== 국민카드를 선택하셨습니다. ===============");
+                System.out.println("=========== 국민카드를 선택하셨습니다. ===========");
                 finalPriceCard = (int) (price * 0.93);
                 discountedPrice = (int) (price * 0.07);
                 break;
             case 3:
-                System.out.println("=============== 농협카드를 선택하셨습니다. ===============");
+                System.out.println("=========== 농협카드를 선택하셨습니다. ===========");
                 finalPriceCard = (int) (price * 0.97);
                 discountedPrice = (int) (price * 0.03);
                 break;
             case 4:
-                System.out.println("=============== 신한카드를 선택하셨습니다. ===============");
+                System.out.println("=========== 신한카드를 선택하셨습니다. ===========");
                 finalPriceCard = (int) (price * 0.99);
                 discountedPrice = (int) (price * 0.01);
                 break;
@@ -187,13 +189,13 @@ public class Payment {
             System.out.println("2. 만원 투입\n3. 오천원 투입\n4. 천원 투입");
             System.out.println("==============================================");
             System.out.print("메뉴를 선택해주세요 : ");
-            int receivedCash = sc.nextInt();
+            String receivedCash = sc.nextLine();
             switch (receivedCash) {
-                case 1:
+                case "1":
                     System.out.println("==============================================");
                     System.out.println("정상 결제되었습니다. 감사합니다.");
                     return;
-                case 2:
+                case "2":
                     num += 10000;
                     if (num > price) {
                         System.out.println("==============================================");
@@ -210,7 +212,7 @@ public class Payment {
                         System.out.println("추가로 지불하셔야할 금액은 " + remainingMoney + "원 입니다.");
                         break;
                     }
-                case 3:
+                case "3":
                     num += 5000;
                     if (num > price) {
                         System.out.println("==============================================");
@@ -228,12 +230,12 @@ public class Payment {
                         break;
                     }
 
-                case 4:
+                case "4":
                     num += 1000;
                     if (num > price) {
                         System.out.println("==============================================");
                         System.out.print("정상 결제되었습니다. 감사합니다.");
-                        System.out.println("거스름돈은 " + (num - price) + " 원 입니다.");
+                        System.out.println("거스름돈은 " + (num - price) + "원 입니다.");
                         return;
                     } else if (num == price) {
                         System.out.println("==============================================");

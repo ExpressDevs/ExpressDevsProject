@@ -8,16 +8,25 @@ public class TicketDTO {
     private int childrenTicketCount = 0;
     private int total = 0;
 
+    String startStation="";
 
     public TicketDTO() {
     }
 
-    public TicketDTO(int adultTicketCount, int seniorTicketCount, int teenagerTicketCount, int childrenTicketCount) {
+    public TicketDTO(int adultTicketCount, int seniorTicketCount, int teenagerTicketCount, int childrenTicketCount,String startStation) {
         this.adultTicketCount = adultTicketCount;
         this.seniorTicketCount = seniorTicketCount;
         this.teenagerTicketCount = teenagerTicketCount;
         this.childrenTicketCount = childrenTicketCount;
+        this.startStation = startStation;
+    }
 
+    public String getStartStation() {
+        return startStation;
+    }
+
+    public void setStartStation(String startStation) {
+        this.startStation = startStation;
 
     }
 
@@ -76,25 +85,26 @@ public class TicketDTO {
 
         System.out.println("==============================================");
         String ticketInfo = "============== 예매하신 티켓 내역 ==============\n";
-        ticketInfo += "티켓번호 : ";
-        ticketInfo += ticketNum;
-        ticketInfo += "\n";
-
-
+        ticketInfo += "티켓번호 : " + ticketNum + "\n";
+        ticketInfo += "출발역 : " + startStation + "\n";
+        ticketInfo += "구매하신 좌석 내역 : ";
         if (adultTicketCount > 0) {
-            ticketInfo += "일반 " + adultTicketCount + "장, ";
+            ticketInfo += "일반 " + adultTicketCount + "석";
         }
         if (seniorTicketCount > 0) {
-            ticketInfo += "시니어 " + seniorTicketCount + "장, ";
+            ticketInfo += ", ";
+            ticketInfo += "시니어 " + seniorTicketCount + "석";
         }
         if (teenagerTicketCount > 0) {
-            ticketInfo += "어린이 " + teenagerTicketCount + "장, ";
+            ticketInfo += ", ";
+            ticketInfo += "어린이 " + teenagerTicketCount + "석";
         }
         if (childrenTicketCount > 0) {
-            ticketInfo += "영유아 " + childrenTicketCount + "장 ";
+            ticketInfo += ", ";
+            ticketInfo += "영유아 " + childrenTicketCount + "석";
         }
 
-        ticketInfo += "입니다.";
+        ticketInfo += " 입니다.";
 
         System.out.println(ticketInfo);
     }

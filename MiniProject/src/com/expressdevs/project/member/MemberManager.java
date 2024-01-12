@@ -72,12 +72,11 @@ public class MemberManager {
 
         System.out.println("==============================================");
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             System.out.print("아이디를 입력하세요: ");
-            String inputID = scanner.nextLine();
+            String inputID = sc.nextLine();
             System.out.println("==============================================");
             System.out.print("비밀번호를 입력하세요: ");
-            String inputPsw = scanner.nextLine();
+            String inputPsw = sc.nextLine();
 
             MemberDTO nowLoginMember;
             for (MemberDTO member : memberList) {
@@ -93,13 +92,32 @@ public class MemberManager {
     }
 
     public void nonMemberLogin() {
-        System.out.println("==============================================");
-        System.out.print("핸드폰 번호를 입력해주세요 \n: ");
-        String phone = sc.nextLine();
+        String phone;
+        while (true) {
+            System.out.println("==============================================");
+            System.out.print("핸드폰 번호를 입력해주세요 (- 생략) \n: ");
+            phone = sc.nextLine();
+            if (phone.length() == 11) {
+                break;
+            } else {
+                System.out.println("잘못된 번호 입니다. 다시 입력해주세요.");
+            }
+        }
         this.nonMemberPhone = phone;
-        System.out.println("==============================================");
-        System.out.print("사용하실 비밀번호를 입력해주세요 \n: ");
-        String psw = sc.nextLine();
+        String psw;
+        while (true) {
+            System.out.println("==============================================");
+            System.out.print("사용하실 비밀번호를 입력해주세요 \n: ");
+            psw = sc.nextLine();
+            System.out.print("비밀번호를 한 번 더 입력해주세요 \n: ");
+            String checkPsw = sc.nextLine();
+            if (psw.equals(checkPsw)) {
+                break;
+            } else {
+                System.out.println("==============================================");
+                System.out.println("입력하신 비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+            }
+        }
         this.nonMemberPsw = psw;
     }
 

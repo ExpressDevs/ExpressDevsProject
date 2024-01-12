@@ -1,7 +1,5 @@
 package com.expressdevs.project.train;
 
-import com.expressdevs.project.payment.Payment;
-
 import java.util.*;
 
 import static com.expressdevs.project.run.Application.timeSchedule;
@@ -9,17 +7,19 @@ import static com.expressdevs.project.run.Application.timeSchedule;
 public class TicketingManager {
 
     Scanner sc = new Scanner(System.in);
-    Payment pay = new Payment();
     private String startStation;
     private String endStation;
 
     private static ArrayList<ArrayList<Integer>> trainSeats = new ArrayList<>();
 
     public TicketDTO startTicketing() {
+
         String startStation = selectStartStation();         //  출발역 선택
         String endStation = selectEndStation(startStation); //  도착역 선택
-        TicketDTO td = new TicketDTO();                     //  객체 생성, td라는 변수를 사용할 수 있게하기 위함
+        TicketDTO td;                                       //  객체 생성, td라는 변수를 사용할 수 있게하기 위함
+
         td = TicketCount();
+        td.setStartStation(startStation);
         ArrayList<Integer> seatInfo;
 
         String time;
