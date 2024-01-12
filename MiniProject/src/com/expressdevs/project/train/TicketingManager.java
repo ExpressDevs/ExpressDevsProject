@@ -1,7 +1,5 @@
 package com.expressdevs.project.train;
 
-import com.expressdevs.project.payment.Payment;
-
 import java.util.*;
 
 import static com.expressdevs.project.run.Application.timeSchedule;
@@ -9,7 +7,6 @@ import static com.expressdevs.project.run.Application.timeSchedule;
 public class TicketingManager {
 
     Scanner sc = new Scanner(System.in);
-    Payment pay = new Payment();
     private String startStation;
     private String endStation;
 
@@ -20,8 +17,9 @@ public class TicketingManager {
 
         String startStation = selectStartStation();
         String endStation = selectEndStation(startStation);
-        TicketDTO td = new TicketDTO();
+        TicketDTO td;
         td = TicketCount();
+        td.setStartStation(startStation);
         ArrayList<Integer> seatInfo;
 
         String time;
