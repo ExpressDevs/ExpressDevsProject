@@ -92,15 +92,21 @@ public class TicketDTO {
             ticketInfo += "일반 " + adultTicketCount + "석";
         }
         if (seniorTicketCount > 0) {
-            ticketInfo += ", ";
+            if (adultTicketCount > 0) {
+                ticketInfo += ", ";
+            }
             ticketInfo += "시니어 " + seniorTicketCount + "석";
         }
         if (teenagerTicketCount > 0) {
-            ticketInfo += ", ";
+            if (adultTicketCount > 0 || seniorTicketCount > 0) {
+                ticketInfo += ", ";
+            }
             ticketInfo += "어린이 " + teenagerTicketCount + "석";
         }
         if (childrenTicketCount > 0) {
-            ticketInfo += ", ";
+            if (adultTicketCount > 0 || seniorTicketCount > 0 || teenagerTicketCount >0) {
+                ticketInfo += ", ";
+                }
             ticketInfo += "영유아 " + childrenTicketCount + "석";
         }
 

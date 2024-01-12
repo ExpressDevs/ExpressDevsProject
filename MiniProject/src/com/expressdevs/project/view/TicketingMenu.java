@@ -29,12 +29,12 @@ public class TicketingMenu {
         memberList.add(JW);
         memberList.add(SR);
 
-        this.td = tm.startTicketing();                                      //
+        this.td = tm.startTicketing();
 
         loginMenu();
         pay.paymentMethod(selectLogin, tm.TimeSchedule(td), nowLoginMember);
         TicketCheck();
-        System.out.println("즐거운 여행이 되십쇼.");
+        System.out.println("즐거운 여행이 되길바랍니다.");
     }
 
     public void loginMenu() {
@@ -69,10 +69,6 @@ public class TicketingMenu {
                 loginMenu();
                 break;
         }
-    }
-
-    public void GenerateTicket() {
-        int ticketNum = (int) (Math.random() * 3);
     }
 
     public void TicketCheck() {

@@ -100,7 +100,7 @@ public class MemberManager {
             if (phone.length() == 11) {
                 break;
             } else {
-                System.out.println("잘못된 번호 입니다. 다시 입력해주세요.");
+                System.out.println("010을 포함한 11자리로 다시 입력해주세요.");
             }
         }
         this.nonMemberPhone = phone;
