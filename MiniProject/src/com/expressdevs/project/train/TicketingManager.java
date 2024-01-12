@@ -10,14 +10,14 @@ public class TicketingManager {
     private String startStation;
     private String endStation;
 
-
     private static ArrayList<ArrayList<Integer>> trainSeats = new ArrayList<>();
 
     public TicketDTO startTicketing() {
 
-        String startStation = selectStartStation();
-        String endStation = selectEndStation(startStation);
-        TicketDTO td;
+        String startStation = selectStartStation();         //  출발역 선택
+        String endStation = selectEndStation(startStation); //  도착역 선택
+        TicketDTO td;                                       //  객체 생성, td라는 변수를 사용할 수 있게하기 위함
+
         td = TicketCount();
         td.setStartStation(startStation);
         ArrayList<Integer> seatInfo;
@@ -44,9 +44,7 @@ public class TicketingManager {
         System.out.println(time + "에 " + startStation + "에서 " + endStation + "으로 가는 기차의 남은 좌석 수는 " + remainingSeats + "개입니다.");
         System.out.println(td.getTotal() + "개 좌석 예매 가능합니다.");
 
-
         return td;
-
     }
 
     public String selectStartStation() {
